@@ -1,0 +1,4820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Margaux Aiyenn — Sweet Eighteen</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500&family=Pinyon+Script&display=swap"
+    rel="stylesheet">
+  <!-- Boho Hawaiian favicon: plumeria bloom with monstera leaf -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='bg' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23f8e8ee'/%3E%3Cstop offset='100%25' stop-color='%23f0d4e2'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='31' fill='url(%23bg)'/%3E%3C!-- Monstera leaf behind --%3E%3Cpath d='M14 48 Q10 34 18 24 Q24 18 32 20 Q28 26 26 34 Q32 30 36 24 Q40 18 46 22 Q44 30 38 36 Q44 34 48 28 Q50 36 44 44 Q38 50 30 50 Q22 52 14 48Z' fill='%232a4035' opacity='0.45'/%3E%3C!-- Plumeria petals --%3E%3Cellipse cx='32' cy='19' rx='5.5' ry='11' fill='%23b85c7a' opacity='0.9' transform='rotate(0 32 32)'/%3E%3Cellipse cx='32' cy='19' rx='5.5' ry='11' fill='%23d4849c' opacity='0.85' transform='rotate(72 32 32)'/%3E%3Cellipse cx='32' cy='19' rx='5.5' ry='11' fill='%23c06888' opacity='0.9' transform='rotate(144 32 32)'/%3E%3Cellipse cx='32' cy='19' rx='5.5' ry='11' fill='%23d4849c' opacity='0.85' transform='rotate(216 32 32)'/%3E%3Cellipse cx='32' cy='19' rx='5.5' ry='11' fill='%23b85c7a' opacity='0.9' transform='rotate(288 32 32)'/%3E%3C!-- Gold center --%3E%3Ccircle cx='32' cy='32' r='6' fill='%23c8a96a'/%3E%3Ccircle cx='32' cy='32' r='3.5' fill='%23e8c882'/%3E%3C/svg%3E">
+  <style>
+    /* ─── TOKENS ──────────────────────────────────────────── */
+    :root {
+      --pk1: #8f3558;
+      /* deep hibiscus pink */
+      --pk2: #b85c7a;
+      /* mid rose */
+      --pk3: #c4637f;
+      /* readable pink */
+      --pk4: #f8e8ee;
+      /* petal pale */
+      --sv1: #6b4a5a;
+      /* warm dark mauve */
+      --sv2: #7a5568;
+      /* mid mauve */
+      --sv3: #4a2a3a;
+      /* dark rose text */
+      --sv4: #f8eef2;
+      /* silver mist */
+      --dark1: #fdf0f4;
+      /* petal white */
+      --dark2: #f8e4ec;
+      /* blush white */
+      --dark3: #f0d4e2;
+      /* soft pink */
+      --leaf: #2a4035;
+      /* tropical leaf green */
+      --sand: #f5efe8;
+      /* warm sand */
+      --mist: #eee6e9;
+      /* alternating mist sections */
+      --gold: #c8a96a;
+      /* moonlit gold */
+      --ff-script: 'Pinyon Script', cursive;
+      --ff-serif: 'Cormorant Garamond', serif;
+      --ff-sans: 'Montserrat', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--ff-sans);
+      background: var(--dark1);
+      color: #4a2a3a;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ─── CUSTOM CURSOR ───────────────────────────────────── */
+    * { cursor: none !important; }
+
+    .cursor-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--pk2);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px rgba(184,92,122,.7), 0 0 20px rgba(184,92,122,.3);
+    }
+
+    .cursor-ring {
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid rgba(184,92,122,.6);
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      transition: width .2s ease, height .2s ease, opacity .2s ease, border-color .2s ease;
+      box-shadow: 0 0 12px rgba(184,92,122,.15);
+    }
+
+    .cursor-ring.hovering {
+      width: 42px;
+      height: 42px;
+      border-color: rgba(184,92,122,.8);
+      box-shadow: 0 0 18px rgba(184,92,122,.25);
+    }
+
+    /* ─── INTRO ───────────────────────────────────────────── */
+    #intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--dark1);
+      transition: opacity 1.4s ease, visibility 1.4s ease;
+    }
+
+    #intro.gone {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #intro-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .intro-shell {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* This centers all children (name, date, etc.) horizontally */
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+    }
+
+    .intro-tag {
+      font-family: var(--ff-sans);
+      font-weight: 200;
+      font-size: .6rem;
+      letter-spacing: .65em;
+      color: var(--sv1);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: riseIn 1s .4s forwards;
+    }
+
+    .intro-hibiscus {
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 340px;
+      height: 340px;
+      opacity: 0;
+      animation: flowerRiseIn 1.2s .7s forwards;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .intro-script {
+      font-family: var(--ff-script);
+      /* Increased the size: Minimum 6rem, preferred 20vw, Maximum 15rem */
+      font-size: clamp(6rem, 20vw, 15rem); 
+      
+      background: linear-gradient(160deg, var(--pk1) 0%, var(--pk2) 55%, var(--sv1) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      
+      line-height: 1.1; /* Tighter line height for a bolder look */
+      display: block;
+      text-align: center; /* Forces text to center */
+      padding-bottom: .2em;
+      opacity: 0;
+      animation: riseIn 1.4s .9s forwards;
+      
+      /* No stroke, no shadow, just pure gradient */
+      filter: none; 
+      position: relative;
+      z-index: 2;
+    }
+
+    .intro-rule {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--pk2), transparent);
+      margin: 1.5rem auto;
+      opacity: 0;
+      animation: riseIn 1s 1.5s forwards;
+    }
+
+    .intro-sub {
+      font-family: var(--ff-sans);
+      font-weight: 200;
+      font-size: .58rem;
+      letter-spacing: .55em;
+      color: var(--sv2);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: riseIn 1s 1.7s forwards;
+    }
+
+    .intro-cta {
+      display: inline-block;
+      margin-top: 2.5rem;
+      font-family: var(--ff-sans);
+      font-weight: 300;
+      font-size: .58rem;
+      letter-spacing: .45em;
+      color: var(--pk3);
+      text-transform: uppercase;
+      border: 1px solid rgba(212, 132, 156, .4);
+      padding: .9em 2.8em;
+      cursor: pointer;
+      background: none;
+      transition: all .4s ease;
+      opacity: 0;
+      animation: riseIn 1s 2.2s forwards, pulse 2.5s 3.2s infinite;
+    }
+
+    .intro-cta:hover {
+      background: rgba(212, 132, 156, .12);
+      border-color: var(--pk2);
+      color: #fff;
+    }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* woven rattan texture overlay */
+    .rattan-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image:
+        repeating-linear-gradient(45deg, rgba(200, 169, 106, .04) 0px, rgba(200, 169, 106, .04) 1px, transparent 1px, transparent 8px),
+        repeating-linear-gradient(-45deg, rgba(200, 169, 106, .04) 0px, rgba(200, 169, 106, .04) 1px, transparent 1px, transparent 8px);
+      pointer-events: none;
+    }
+
+    /* ── side photo strips ── */
+    .side-strip {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 130px;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 100px 8px;
+      gap: .6rem;
+    }
+
+    .side-strip.left {
+      left: 0;
+    }
+
+    .side-strip.right {
+      right: 0;
+    }
+
+    @media(max-width:900px) {
+      .side-strip {
+        display: none;
+      }
+    }
+
+    .ph-frame {
+      width: 112px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(212, 132, 156, .28);
+      background: rgba(255, 255, 255, .5);
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      transition: border-color .3s;
+    }
+
+    .ph-frame::before,
+    .ph-frame::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-color: rgba(212, 132, 156, .5);
+      border-style: solid;
+    }
+
+    .ph-frame::before {
+      top: 5px;
+      left: 5px;
+      border-width: 1px 0 0 1px;
+    }
+
+    .ph-frame::after {
+      bottom: 5px;
+      right: 5px;
+      border-width: 0 1px 1px 0;
+    }
+
+    .ph-frame:hover {
+      border-color: rgba(212, 132, 156, .6);
+    }
+
+    .ph-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ph-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+      padding: .8rem;
+    }
+
+    .ph-icon {
+      width: 28px;
+      height: 28px;
+      border: 1px dashed rgba(212, 132, 156, .4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ph-icon svg {
+      width: 12px;
+      height: 12px;
+      stroke: var(--pk2);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .ph-label {
+      font-family: var(--ff-sans);
+      font-size: .42rem;
+      letter-spacing: .12em;
+      color: rgba(212, 132, 156, .5);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* ── canva border slots ── */
+    .canva-row {
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 148px;
+      pointer-events: none;
+    }
+
+    .canva-row.top {
+      top: 0;
+      align-items: flex-start;
+      padding-top: 6px;
+    }
+
+    .canva-row.bot {
+      bottom: 0;
+      align-items: flex-end;
+      padding-bottom: 6px;
+    }
+
+    .canva-slot {
+      width: 130px;
+      height: 130px;
+      border: 1px dashed rgba(212, 132, 156, .15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .canva-slot span {
+      font-size: .38rem;
+      letter-spacing: .08em;
+      color: rgba(212, 132, 156, .25);
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ── hero centre ── */
+    .hero-body {
+      position: relative;
+      z-index: 4;
+      text-align: center;
+      padding: 2rem 180px;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    @media(max-width:900px) {
+      .hero-body {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    .hero-eyebrow {
+      font-family: var(--ff-sans);
+      font-weight: 200;
+      font-size: .58rem;
+      letter-spacing: .65em;
+      color: var(--sv1);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-first {
+      font-family: var(--ff-script);
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      color: var(--pk3);
+      display: block;
+      line-height: 1.3;
+      margin-bottom: .2rem;
+    }
+
+    .hero-name {
+      font-family: var(--ff-script);
+      font-size: clamp(5rem, 14vw, 11rem);
+      background: linear-gradient(160deg, var(--pk1) 0%, var(--pk2) 50%, var(--sv1) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1.2;
+      padding-bottom: .15em;
+      filter: drop-shadow(0 0 80px rgba(184, 92, 122, .4));
+    }
+
+    .hero-surname {
+      font-family: var(--ff-sans);
+      font-weight: 200;
+      font-size: .6rem;
+      letter-spacing: .7em;
+      color: var(--sv2);
+      text-transform: uppercase;
+      display: block;
+      margin-top: 1.2rem;
+    }
+
+    .hdiv {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.8rem auto;
+      width: fit-content;
+    }
+
+    .hdiv-line {
+      width: 70px;
+      height: 1px;
+    }
+
+    .hdiv-line.l {
+      background: linear-gradient(90deg, transparent, var(--pk2));
+    }
+
+    .hdiv-line.r {
+      background: linear-gradient(90deg, var(--pk2), transparent);
+    }
+
+    .hdiv-leaf {
+      font-size: 1rem;
+      opacity: .7;
+    }
+
+    .hero-date {
+      font-family: var(--ff-sans);
+      font-weight: 300;
+      font-size: .65rem;
+      letter-spacing: .4em;
+      color: var(--pk3);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: .4rem;
+    }
+
+    .hero-venue {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(.9rem, 2.5vw, 1.2rem);
+      color: var(--sv2);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      animation: bob 2.2s infinite;
+    }
+
+    .scroll-hint span {
+      font-family: var(--ff-sans);
+      font-size: .45rem;
+      letter-spacing: .35em;
+      color: var(--sv1);
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--sv1), transparent);
+    }
+
+    /* ─── SECTION SHELLS ──────────────────────────────────── */
+    .sec {
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .sec-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    /* tropical leaf dividers */
+    .leaf-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      margin: 1.8rem 0 3.5rem;
+    }
+
+    .leaf-divider-line {
+      flex: 1;
+      max-width: 100px;
+      height: 1px;
+    }
+
+    .leaf-divider-line.pink {
+      background: linear-gradient(90deg, transparent, var(--pk2));
+    }
+
+    .leaf-divider-line.pink.r {
+      background: linear-gradient(90deg, var(--pk2), transparent);
+    }
+
+    .leaf-divider-line.sv {
+      background: linear-gradient(90deg, transparent, var(--sv2));
+    }
+
+    .leaf-divider-line.sv.r {
+      background: linear-gradient(90deg, var(--sv2), transparent);
+    }
+
+    .eyebrow {
+      font-family: var(--ff-sans);
+      font-weight: 200;
+      font-size: .57rem;
+      letter-spacing: .6em;
+      text-transform: uppercase;
+      text-align: center;
+      display: block;
+      margin-bottom: .6rem;
+    }
+
+    .eyebrow.pink {
+      color: var(--pk2);
+    }
+
+    .eyebrow.silver {
+      color: var(--sv1);
+    }
+
+    .sec-title {
+      font-family: var(--ff-script);
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      text-align: center;
+      line-height: 1;
+      display: block;
+    }
+
+    .sec-title.light {
+      color: var(--pk3);
+    }
+
+    .sec-title.dark {
+      background: linear-gradient(140deg, var(--pk1), var(--pk2) 60%, var(--sv1));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── DETAILS BAND ────────────────────────────────────── */
+    .details-band {
+      background: linear-gradient(160deg, var(--mist) 0%, #ede6e9 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* hibiscus watermark behind details */
+    .details-band::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      opacity: .04;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='100' cy='40' rx='22' ry='40' fill='%23d4849c' transform='rotate(0 100 100)'/%3E%3Cellipse cx='100' cy='40' rx='22' ry='40' fill='%23d4849c' transform='rotate(72 100 100)'/%3E%3Cellipse cx='100' cy='40' rx='22' ry='40' fill='%23d4849c' transform='rotate(144 100 100)'/%3E%3Cellipse cx='100' cy='40' rx='22' ry='40' fill='%23d4849c' transform='rotate(216 100 100)'/%3E%3Cellipse cx='100' cy='40' rx='22' ry='40' fill='%23d4849c' transform='rotate(288 100 100)'/%3E%3Ccircle cx='100' cy='100' r='18' fill='%23b85c7a'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+
+    .det-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(212, 132, 156, .12);
+    }
+
+    @media(max-width:640px) {
+      .det-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .det-card {
+      background: rgba(255, 255, 255, .7);
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: background .35s;
+    }
+
+    .det-card:hover {
+      background: rgba(255, 255, 255, .9);
+    }
+
+    .det-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--pk2), transparent);
+    }
+
+    .det-icon {
+      display: block;
+      margin: 0 auto 1.2rem;
+      width: 42px;
+      height: 42px;
+      opacity: .65;
+    }
+
+    .det-lbl {
+      font-family: var(--ff-sans);
+      font-weight: 200;
+      font-size: .52rem;
+      letter-spacing: .5em;
+      color: var(--sv1);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: .6rem;
+    }
+
+    .det-val {
+      font-family: var(--ff-serif);
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--pk3);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* ─── COUNTDOWN ───────────────────────────────────────── */
+    .countdown-band {
+      background: linear-gradient(160deg, var(--dark1) 0%, var(--dark3) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .countdown-band > *:not(#water-canvas) {
+      position: relative;
+      z-index: 2;
+    }
+
+    #water-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .countdown-band::after {
+      display: none;
+    }
+
+    .cd-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 1.5rem;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cd-unit {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cd-num {
+      font-family: var(--ff-serif);
+      font-weight: 300;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      background: linear-gradient(180deg, var(--pk1) 0%, var(--pk2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1;
+      min-width: 90px;
+    }
+
+    .cd-lbl {
+      font-family: var(--ff-sans);
+      font-weight: 200;
+      font-size: .48rem;
+      letter-spacing: .5em;
+      color: var(--sv1);
+      text-transform: uppercase;
+      margin-top: .4rem;
+    }
+
+    .cd-colon {
+      font-family: var(--ff-serif);
+      font-size: 3.5rem;
+      color: var(--pk2);
+      opacity: .4;
+      line-height: 1.15;
+      align-self: center;
+    }
+
+    /* ─── 18s SECTION ─────────────────────────────────────── */
+    .eighteen-band {
+      background: linear-gradient(155deg, var(--mist) 0%, #ede6e9 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+
+
+    .tab-row {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      border: 1px solid rgba(212, 132, 156, .25);
+      width: fit-content;
+      margin: 0 auto 3rem;
+    }
+
+    .t-tab {
+      font-family: var(--ff-sans);
+      font-weight: 300;
+      font-size: .55rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      padding: .85rem 2rem;
+      color: var(--sv1);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: all .3s;
+      border-right: 1px solid rgba(212, 132, 156, .15);
+    }
+
+    .t-tab:last-child {
+      border-right: none;
+    }
+
+    .t-tab.on {
+      background: rgba(212, 132, 156, .12);
+      color: var(--pk3);
+    }
+
+    @media(max-width:600px) {
+      .tab-row {
+        flex-direction: column;
+        width: 220px;
+      }
+
+      .t-tab {
+        border-right: none;
+        border-bottom: 1px solid rgba(212, 132, 156, .15);
+      }
+
+      .t-tab:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .t-panel {
+      display: none;
+    }
+
+    .t-panel.on {
+      display: block;
+      animation: riseIn .5s ease;
+    }
+
+    .t-panel-intro {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--sv1);
+      text-align: center;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .g18 {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: .9rem;
+    }
+
+    @media(max-width:860px) {
+      .g18 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media(max-width:500px) {
+      .g18 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .c18 {
+      border: 1px solid rgba(212, 132, 156, .25);
+      padding: 1.4rem .6rem;
+      text-align: center;
+      position: relative;
+      transition: all .3s;
+      background: rgba(255, 255, 255, .55);
+      overflow: hidden;
+    }
+
+    .c18::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212, 132, 156, .08) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .c18:hover {
+      border-color: rgba(212, 132, 156, .5);
+      transform: translateY(-4px);
+    }
+
+    .c18:hover::before {
+      opacity: 1;
+    }
+
+    .n18 {
+      font-family: var(--ff-script);
+      font-size: 2.4rem;
+      color: var(--pk2);
+      display: block;
+      line-height: 1;
+      margin-bottom: .25rem;
+    }
+
+    .l18 {
+      font-family: var(--ff-sans);
+      font-weight: 400;
+      font-size: .68rem;
+      letter-spacing: .03em;
+      color: var(--sv1);
+      text-transform: none;
+      line-height: 1.3;
+    }
+
+    .c18.money {
+      border-color: rgba(212, 132, 156, .25);
+      background: rgba(255, 255, 255, .55);
+    }
+
+    .c18.money .n18 {
+      color: var(--gold);
+    }
+
+    .c18.shot {
+      border-color: rgba(184, 192, 207, .2);
+    }
+
+    .c18.shot .n18 {
+      color: var(--sv2);
+    }
+
+    /* ─── WISHLIST ────────────────────────────────────────── */
+    .wish-band {
+      background: linear-gradient(160deg, #ede6e9 0%, var(--mist) 100%);
+      position: relative;
+    }
+
+    /* hibiscus corner watermarks */
+    .wish-band::before,
+    .wish-band::after {
+      content: '🌺';
+      position: absolute;
+      font-size: 6rem;
+      opacity: .04;
+      line-height: 1;
+    }
+
+    .wish-band::before {
+      top: 2rem;
+      left: 2rem;
+    }
+
+    .wish-band::after {
+      bottom: 2rem;
+      right: 2rem;
+    }
+
+    .wish-box {
+      max-width: 780px;
+      margin: 0 auto;
+      border: 1px solid rgba(212, 132, 156, .3);
+      background: rgba(255, 255, 255, .6);
+      padding: 3rem;
+      position: relative;
+    }
+
+    .wish-box::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(212, 132, 156, .1);
+      pointer-events: none;
+    }
+
+    .wish-intro {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--sv1);
+      text-align: center;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .wish-form {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+
+    .w-inp {
+      flex: 1;
+      min-width: 120px;
+      border: 1px solid rgba(212, 132, 156, .25);
+      background: rgba(255, 255, 255, .7);
+      padding: .7rem 1rem;
+      color: #4a2a3a;
+      font-family: var(--ff-sans);
+      font-size: .7rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color .3s;
+    }
+
+    .w-inp::placeholder {
+      color: var(--sv1);
+    }
+
+    .w-inp:focus {
+      border-color: var(--pk2);
+    }
+
+    .w-btn {
+      background: var(--pk1);
+      color: #fff;
+      border: none;
+      padding: .7rem 1.5rem;
+      font-family: var(--ff-sans);
+      font-size: .56rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .3s;
+      flex-shrink: 0;
+    }
+
+    .w-btn:hover {
+      background: var(--pk2);
+    }
+
+    .wishes-live {
+      margin-top: 1.2rem;
+    }
+
+    .wish-entry {
+      border-bottom: 1px solid rgba(212, 132, 156, .1);
+      padding: .85rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      animation: riseIn .4s ease;
+    }
+
+    .w-heart {
+      color: var(--pk2);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+
+    .w-name {
+      font-family: var(--ff-sans);
+      font-size: .6rem;
+      font-weight: 400;
+      color: var(--pk3);
+      margin-bottom: .2rem;
+    }
+
+    .w-msg {
+      font-family: var(--ff-sans);
+      font-size: .65rem;
+      font-weight: 200;
+      color: var(--sv2);
+      line-height: 1.5;
+    }
+
+    .wish-sep {
+      width: 60px;
+      height: 1px;
+      margin: 2.5rem auto;
+      background: linear-gradient(90deg, transparent, var(--pk2), transparent);
+    }
+
+    /* wish list items */
+    .wl-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .8rem;
+    }
+
+    @media(max-width:540px) {
+      .wl-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .wl-item {
+      background: rgba(255, 255, 255, .5);
+      border: 1px solid rgba(212, 132, 156, .2);
+      padding: 1rem 1.2rem;
+      display: flex;
+      gap: .8rem;
+      align-items: center;
+      transition: border-color .3s;
+    }
+
+    .wl-item:hover {
+      border-color: rgba(212, 132, 156, .4);
+    }
+
+    .wl-num {
+      font-family: var(--ff-script);
+      font-size: 2rem;
+      color: var(--pk2);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .wl-title {
+      font-family: var(--ff-sans);
+      font-size: .68rem;
+      font-weight: 400;
+      color: var(--sv3);
+    }
+
+    .wl-desc {
+      font-family: var(--ff-sans);
+      font-size: .58rem;
+      font-weight: 200;
+      color: var(--sv1);
+      line-height: 1.5;
+      margin-top: .15rem;
+    }
+
+    /* ─── ATTIRE ──────────────────────────────────────────── */
+    .attire-band {
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(42, 64, 53, .06) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(184, 92, 122, .1) 0%, transparent 60%),
+        linear-gradient(160deg, var(--dark2) 0%, var(--dark3) 100%);
+    }
+
+    .attire-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    @media(max-width:720px) {
+      .attire-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .attire-frame {
+      aspect-ratio: 3/4;
+      border: 1px solid rgba(212, 132, 156, .35);
+      background: rgba(255, 255, 255, .5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .attire-frame::before,
+    .attire-frame::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-color: rgba(212, 132, 156, .45);
+      border-style: solid;
+    }
+
+    .attire-frame::before {
+      top: 10px;
+      left: 10px;
+      border-width: 1px 0 0 1px;
+    }
+
+    .attire-frame::after {
+      bottom: 10px;
+      right: 10px;
+      border-width: 0 1px 1px 0;
+    }
+
+    .attire-ph-icon {
+      width: 44px;
+      height: 44px;
+      border: 1px dashed rgba(212, 132, 156, .35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .attire-ph-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--pk2);
+      fill: none;
+      stroke-width: 1.3;
+      opacity: .6;
+    }
+
+    .attire-ph-text {
+      font-family: var(--ff-sans);
+      font-size: .48rem;
+      letter-spacing: .15em;
+      color: rgba(212, 132, 156, .45);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .attire-ph-quote {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: .88rem;
+      color: rgba(212, 132, 156, .35);
+      text-align: center;
+      padding: 0 1.5rem;
+      line-height: 1.5;
+    }
+
+    .at-head {
+      font-family: var(--ff-script);
+      font-size: 3.2rem;
+      color: var(--pk3);
+      margin-bottom: .4rem;
+    }
+
+    .at-theme {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--sv2);
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    .at-body {
+      font-family: var(--ff-sans);
+      font-weight: 200;
+      font-size: .7rem;
+      color: var(--sv1);
+      line-height: 1.9;
+      margin-bottom: 2rem;
+    }
+
+    .palette-row {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .sw {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .sw-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .sw-name {
+      font-family: var(--ff-sans);
+      font-size: .42rem;
+      letter-spacing: .1em;
+      color: var(--sv1);
+      text-transform: uppercase;
+    }
+
+    .at-rules {
+      list-style: none;
+    }
+
+    .at-rules li {
+      font-family: var(--ff-sans);
+      font-weight: 200;
+      font-size: .68rem;
+      color: var(--sv1);
+      padding: .55rem 0;
+      border-bottom: 1px solid rgba(212, 132, 156, .08);
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .at-rules li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--pk2);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(184, 92, 122, .2);
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '✦ ✦ ✦';
+      position: absolute;
+      top: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .55rem;
+      letter-spacing: .6em;
+      color: rgba(212, 132, 156, .25);
+    }
+
+    .ft-name {
+      font-family: var(--ff-script);
+      font-size: 4rem;
+      color: var(--pk3);
+      opacity: .45;
+      margin-bottom: 1rem;
+    }
+
+    .ft-text {
+      font-family: var(--ff-sans);
+      font-weight: 200;
+      font-size: .52rem;
+      letter-spacing: .45em;
+      color: var(--sv1);
+      text-transform: uppercase;
+    }
+
+    /* ─── MUSIC PLAYER ────────────────────────────────────── */
+    #mp {
+      position: fixed;
+      bottom: 1.8rem;
+      right: 1.8rem;
+      z-index: 5000;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      background: rgba(253, 240, 244, .92);
+      border: 1px solid rgba(212, 132, 156, .28);
+      padding: .75rem 1.2rem;
+      backdrop-filter: blur(12px);
+    }
+
+    #mp-btn {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(212, 132, 156, .4);
+      background: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .3s;
+      flex-shrink: 0;
+    }
+
+    #mp-btn:hover {
+      background: rgba(212, 132, 156, .12);
+    }
+
+    #mp-btn svg {
+      width: 13px;
+      height: 13px;
+      fill: var(--pk3);
+    }
+
+    .mp-info {
+      font-family: var(--ff-sans);
+      font-size: .48rem;
+      font-weight: 200;
+      letter-spacing: .15em;
+      color: var(--sv1);
+      text-transform: uppercase;
+    }
+
+    .mp-title {
+      color: var(--pk3);
+      display: block;
+      font-weight: 400;
+    }
+
+    /* ─── ANIMATIONS ──────────────────────────────────────── */
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes flowerRiseIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 22px));
+      }
+      to {
+        opacity: 0.4;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: .6;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(7px);
+      }
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(540deg);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .9s ease, transform .9s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal.d1 {
+      transition-delay: .1s;
+    }
+
+    .reveal.d2 {
+      transition-delay: .2s;
+    }
+
+    .reveal.d3 {
+      transition-delay: .3s;
+    }
+
+    .reveal.d4 {
+      transition-delay: .4s;
+    }
+
+    /* ─── TILT ────────────────────────────────────────────── */
+    .tilt {
+      transform-style: preserve-3d;
+      perspective: 800px;
+      transition: transform .08s linear;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+   BOHO HAWAIIAN ADDITIONS
+═══════════════════════════════════════════════════════ */
+
+    /* ─── FLOATING PLUMERIA PETALS ──────────────────────── */
+    .petal-field {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      overflow: hidden;
+    }
+
+    .fp {
+      opacity: 0.45;
+    }
+
+    .fp {
+      position: absolute;
+      width: 18px;
+      height: 26px;
+      border-radius: 50% 50% 50% 0 / 60% 60% 40% 40%;
+      opacity: 0;
+      animation: floatPetal linear infinite;
+      transform-origin: center bottom;
+    }
+
+    @keyframes floatPetal {
+      0% {
+        opacity: 0;
+        transform: translateY(-12vh) rotate(0deg) scale(.6);
+      }
+
+      8% {
+        opacity: .3;
+      }
+
+      85% {
+        opacity: .22;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(110vh) rotate(200deg) translateX(30px) scale(1);
+      }
+    }
+
+    @keyframes petalSway {
+
+      0%,
+      100% {
+        margin-left: 0;
+      }
+
+      25% {
+        margin-left: 22px;
+      }
+
+      75% {
+        margin-left: -18px;
+      }
+    }
+
+    /* ─── BOHO BOTANICAL SECTION DIVIDER ───────────────── */
+    .rope-border {
+      position: relative;
+    }
+
+    /* Top divider — SVG injected via .boho-divider elements */
+    .boho-divider {
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      pointer-events: none;
+      line-height: 0;
+      overflow: visible;
+    }
+
+    .boho-divider.top {
+      top: -1px;
+    }
+
+    .boho-divider.bot {
+      bottom: -1px;
+    }
+
+    .boho-divider svg {
+      display: block;
+      width: 100%;
+      overflow: visible;
+    }
+
+    /* Animated plumeria nodes along the stem */
+    .divider-bloom {
+      animation: bloomSway 6s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
+
+    .divider-bloom:nth-child(2n) {
+      animation-delay: -2s;
+    }
+
+    .divider-bloom:nth-child(3n) {
+      animation-delay: -4s;
+    }
+
+    @keyframes bloomSway {
+
+      0%,
+      100% {
+        transform: rotate(-3deg) scale(1);
+      }
+
+      50% {
+        transform: rotate(3deg) scale(1.04);
+      }
+    }
+
+    .divider-leaf {
+      animation: leafSway 8s ease-in-out infinite;
+      transform-origin: 50% 100%;
+    }
+
+    .divider-leaf:nth-child(even) {
+      animation-delay: -3s;
+      animation-direction: alternate-reverse;
+    }
+
+    @keyframes leafSway {
+
+      0%,
+      100% {
+        transform: rotate(-5deg);
+      }
+
+      50% {
+        transform: rotate(5deg);
+      }
+    }
+
+    /* ─── TIKI TORCH GLOW on section titles ─────────────── */
+    .tiki-glow {
+      position: relative;
+      display: block;
+      text-align: center;
+    }
+
+    /* ─── WAVE DIVIDER ───────────────────────────────────── */
+    .wave-divider {
+      position: relative;
+      overflow: hidden;
+      height: 52px;
+      margin: 0;
+      line-height: 0;
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .wave-top .wave-divider {
+      transform: rotate(180deg);
+    }
+
+    /* ─── TROPICAL LEAF CORNER ACCENTS ──────────────────── */
+    .leaf-corner {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      pointer-events: none;
+      z-index: 2;
+      opacity: .18;
+    }
+
+    .leaf-corner.tl {
+      top: 0;
+      left: 0;
+    }
+
+    .leaf-corner.tr {
+      top: 0;
+      right: 0;
+      transform: scaleX(-1);
+    }
+
+    .leaf-corner.bl {
+      bottom: 0;
+      left: 0;
+      transform: scaleY(-1);
+    }
+
+    .leaf-corner.br {
+      bottom: 0;
+      right: 0;
+      transform: scale(-1);
+    }
+
+    /* ─── SHELL ORNAMENT ROW ─────────────────────────────── */
+    .shell-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.4rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .shell-row span {
+      font-size: 1.1rem;
+      opacity: .5;
+      animation: shellBob 2.8s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    .shell-row span:nth-child(2) {
+      animation-delay: .4s;
+    }
+
+    .shell-row span:nth-child(3) {
+      animation-delay: .8s;
+    }
+
+    .shell-row span:nth-child(4) {
+      animation-delay: 1.2s;
+    }
+
+    .shell-row span:nth-child(5) {
+      animation-delay: 1.6s;
+    }
+
+    @keyframes shellBob {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(-4deg);
+        opacity: .5;
+      }
+
+      50% {
+        transform: translateY(-6px) rotate(4deg);
+        opacity: .75;
+      }
+    }
+
+    /* ─── PLUMERIA WATERMARK on alt sections ─────────────── */
+    .plumeria-wm {
+      position: absolute;
+      pointer-events: none;
+      opacity: .05;
+      animation: wmSpin 60s linear infinite;
+    }
+
+    @keyframes wmSpin {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    /* ─── SHIMMER STRIPE across hero ────────────────────── */
+    .hero-shimmer {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(105deg,
+          transparent 40%,
+          rgba(255, 220, 235, .07) 50%,
+          transparent 60%);
+      background-size: 200% 100%;
+      animation: heroShimmer 7s ease-in-out infinite;
+    }
+
+    @keyframes heroShimmer {
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    /* ─── HIBISCUS STAMP on cards ───────────────────────── */
+    .det-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .det-card .hibiscus-stamp {
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      width: 60px;
+      height: 60px;
+      opacity: .06;
+      pointer-events: none;
+      transform: rotate(25deg);
+      transition: opacity .4s, transform .4s;
+    }
+
+    .det-card:hover .hibiscus-stamp {
+      opacity: .14;
+      transform: rotate(15deg) scale(1.1);
+    }
+
+    /* ─── TIKKI TORCH SIDE ORNAMENTS ─────────────────────── */
+    .torch-left,
+    .torch-right {
+      position: absolute;
+      top: 50%;
+      width: 28px;
+      pointer-events: none;
+      z-index: 5;
+      opacity: .3;
+    }
+
+    .torch-left {
+      left: 1.5rem;
+      transform: translateY(-50%);
+    }
+
+    .torch-right {
+      right: 1.5rem;
+      transform: translateY(-50%) scaleX(-1);
+    }
+
+    .torch-flame {
+      animation: torchFlicker 2.2s ease-in-out infinite;
+      transform-origin: bottom center;
+    }
+
+    /* ─── WOVEN RATTAN SECTION TEXTURE ──────────────────── */
+    .rattan-sec {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        repeating-linear-gradient(30deg, rgba(200, 169, 106, .028) 0, rgba(200, 169, 106, .028) 1px, transparent 1px, transparent 14px),
+        repeating-linear-gradient(-30deg, rgba(200, 169, 106, .028) 0, rgba(200, 169, 106, .028) 1px, transparent 1px, transparent 14px);
+    }
+
+    /* ─── PETAL TRAIL on hover for cards ─────────────────── */
+    .c18:hover::after {
+      content: '🌸';
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      font-size: .7rem;
+      opacity: .4;
+      animation: riseIn .4s ease;
+    }
+
+    /* ─── BOHO BADGE on hero ─────────────────────────────── */
+    .boho-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border: 1px solid rgba(200, 169, 106, .3);
+      background: rgba(200, 169, 106, .06);
+      padding: .4em 1.4em;
+      margin-top: 1.6rem;
+      font-family: var(--ff-sans);
+      font-size: .48rem;
+      letter-spacing: .4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .boho-badge::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(200, 169, 106, .12), transparent);
+      transform: translateX(-100%);
+      animation: badgeShine 3.5s ease-in-out 2s infinite;
+    }
+
+    @keyframes badgeShine {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* ─── SECTION ENTRANCE LINES ─────────────────────────── */
+    .sec-line-enter {
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--pk2), var(--gold), var(--pk2));
+      margin: 0 auto 1rem;
+      transition: width 1.2s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .reveal.in .sec-line-enter {
+      width: 120px;
+    }
+
+    /* ─── ANIMATED TROPICAL STRIPE on mist sections ──────── */
+    .tropical-stripe {
+      position: absolute;
+      top: 0;
+      left: -60%;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(180deg,
+          transparent 0%,
+          rgba(42, 64, 53, .025) 30%,
+          rgba(184, 92, 122, .03) 60%,
+          transparent 100%);
+      transform: skewX(-12deg);
+      animation: tropStripe 18s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .tropical-stripe:nth-child(2) {
+      animation-delay: -9s;
+      opacity: .6;
+    }
+
+    @keyframes tropStripe {
+      from {
+        left: -60%;
+      }
+
+      to {
+        left: 120%;
+      }
+    }
+
+    /* ─── WAVE SEPARATOR bottom of hero ─────────────────── */
+    .hero-wave {
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      z-index: 6;
+      line-height: 0;
+      pointer-events: none;
+    }
+
+    .hero-wave svg {
+      display: block;
+      width: 100%;
+    }
+
+    /* ─── COUNTDOWN NUMBER GLOW ─────────────────────────── */
+    .cd-num {
+      filter: drop-shadow(0 0 18px rgba(184, 92, 122, .35));
+      animation: numPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes numPulse {
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 18px rgba(184, 92, 122, .35));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 32px rgba(184, 92, 122, .6));
+      }
+    }
+
+    /* ─── FOOTER PLUMERIA ORNAMENT ───────────────────────── */
+    .ft-ornament {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0 1rem;
+      opacity: .3;
+    }
+
+    .ft-ornament span {
+      font-size: 1.2rem;
+      animation: shellBob 3s ease-in-out infinite;
+    }
+
+    .ft-ornament span:nth-child(2) {
+      animation-delay: .5s;
+      font-size: .9rem;
+    }
+
+    .ft-ornament span:nth-child(4) {
+      animation-delay: .5s;
+      font-size: .9rem;
+    }
+
+    /* ─── WISH BAND TROPICAL BG ──────────────────────────── */
+    .wish-band {
+      position: relative;
+      overflow: hidden;
+    }
+
+
+    /* ═══════════════════════════════════════════════════════
+   ENHANCED BOHO HAWAIIAN VISUALS
+═══════════════════════════════════════════════════════ */
+
+    /* ─── LEI GARLAND ROW ─────────────────────────────── */
+    .lei-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: .25rem;
+      margin: 1.8rem 0 .5rem;
+      flex-wrap: wrap;
+      opacity: .55;
+    }
+
+    .lei-row span {
+      font-size: .8rem;
+      display: inline-block;
+      animation: shellBob 3s ease-in-out infinite;
+    }
+
+    .lei-row span:nth-child(2n) {
+      animation-delay: .25s;
+    }
+
+    .lei-row span:nth-child(3n) {
+      animation-delay: .55s;
+    }
+
+    .lei-row span:nth-child(4n) {
+      animation-delay: .85s;
+    }
+
+    .lei-row span:nth-child(5n) {
+      animation-delay: 1.1s;
+    }
+
+    .lei-row span:nth-child(6n) {
+      animation-delay: 1.4s;
+    }
+
+    .lei-row span:nth-child(7n) {
+      animation-delay: 1.7s;
+    }
+
+    /* Enhanced rope border — now handled by .boho-divider SVGs */
+
+    /* ─── INTRO SCRIPT double glow pulse ─────────────────── */
+    .intro-script {
+      animation: riseIn 1.4s .9s forwards, scriptPulse 5s 2.8s ease-in-out infinite !important;
+    }
+
+    @keyframes scriptPulse {
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 50px rgba(184, 92, 122, .35));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 90px rgba(184, 92, 122, .68)) drop-shadow(0 0 35px rgba(200, 169, 106, .32));
+      }
+    }
+
+    /* ─── STAR FIELD twinkle at intro bottom ─────────────── */
+    #intro::after {
+      content: '\2736  \2736  \2736  \2736  \2736';
+      position: absolute;
+      bottom: 2rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: .42rem;
+      letter-spacing: 2em;
+      color: rgba(212, 132, 156, .25);
+      pointer-events: none;
+      animation: starTwinkle 4s ease-in-out infinite;
+    }
+
+    @keyframes starTwinkle {
+
+      0%,
+      100% {
+        opacity: .4;
+        letter-spacing: 2em;
+      }
+
+      50% {
+        opacity: 1;
+        letter-spacing: 2.6em;
+      }
+    }
+
+    /* ─── HERO NAME living glow ───────────────────────────── */
+    .hero-name {
+      animation: heroNameDrift 8s ease-in-out infinite;
+    }
+
+    @keyframes heroNameDrift {
+
+      0%,
+      100% {
+        filter: drop-shadow(0 0 80px rgba(184, 92, 122, .4));
+      }
+
+      50% {
+        filter: drop-shadow(0 0 130px rgba(184, 92, 122, .7)) drop-shadow(0 0 45px rgba(200, 169, 106, .35));
+      }
+    }
+
+    /* ─── HERO BODY wave underline ────────────────────────── */
+    .hero-body::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      height: 8px;
+      pointer-events: none;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 4 C28 0 55 8 82 4 C110 0 138 8 165 4 C192 0 210 6 220 4' stroke='%23d4849c' stroke-width='1.2' fill='none' opacity='.5'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+
+    /* ─── TIKI TORCH hero side ornaments ─────────────────── */
+    .hero-tiki {
+      position: absolute;
+      top: 50%;
+      width: 24px;
+      z-index: 5;
+      pointer-events: none;
+      opacity: .25;
+      transform: translateY(-50%);
+    }
+
+    .hero-tiki.l {
+      left: 12px;
+    }
+
+    .hero-tiki.r {
+      right: 12px;
+      transform: translateY(-50%) scaleX(-1);
+    }
+
+    @media(max-width:900px) {
+      .hero-tiki {
+        display: none;
+      }
+    }
+
+    /* ─── BEACH SAND micro-dot on details-band ───────────── */
+    .details-band {
+      background:
+        url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.5' cy='1.5' r='.7' fill='%23c8a96a' opacity='.042'/%3E%3C/svg%3E") repeat,
+        linear-gradient(160deg, var(--mist) 0%, %23ede6e9 100%) !important;
+    }
+
+    /* ─── OCEAN WAVE overlay at countdown bottom ─────────── */
+    .countdown-band::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      pointer-events: none;
+      z-index: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 32 C240 10 480 54 720 32 C960 10 1200 54 1440 32 L1440 64 L0 64Z' fill='%23b85c7a' opacity='.045'/%3E%3Cpath d='M0 44 C360 22 720 64 1080 44 C1260 34 1380 54 1440 44 L1440 64 L0 64Z' fill='%23c8a96a' opacity='.04'/%3E%3C/svg%3E") bottom/cover no-repeat;
+    }
+
+    /* ─── COUNTDOWN digits glow halo ─────────────────────── */
+    .cd-row::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 200px;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(ellipse at center, rgba(200, 169, 106, .07) 0%, transparent 70%);
+    }
+
+    /* ─── HIBISCUS micro-pattern on c18 cards ────────────── */
+    .c18 {
+      background:
+        url("data:image/svg+xml,%3Csvg width='44' height='44' viewBox='0 0 44 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='22' cy='9' rx='5' ry='10' fill='%23d4849c' opacity='.035' transform='rotate(0 22 22)'/%3E%3Cellipse cx='22' cy='9' rx='5' ry='10' fill='%23d4849c' opacity='.035' transform='rotate(72 22 22)'/%3E%3Cellipse cx='22' cy='9' rx='5' ry='10' fill='%23d4849c' opacity='.035' transform='rotate(144 22 22)'/%3E%3Cellipse cx='22' cy='9' rx='5' ry='10' fill='%23d4849c' opacity='.035' transform='rotate(216 22 22)'/%3E%3Cellipse cx='22' cy='9' rx='5' ry='10' fill='%23d4849c' opacity='.035' transform='rotate(288 22 22)'/%3E%3C/svg%3E") center/44px repeat,
+        rgba(255, 255, 255, .55);
+    }
+
+    .c18.money {
+      background:
+        url("data:image/svg+xml,%3Csvg width='44' height='44' viewBox='0 0 44 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='22' cy='9' rx='5' ry='10' fill='%23d4849c' opacity='.035' transform='rotate(0 22 22)'/%3E%3Cellipse cx='22' cy='9' rx='5' ry='10' fill='%23d4849c' opacity='.035' transform='rotate(72 22 22)'/%3E%3Cellipse cx='22' cy='9' rx='5' ry='10' fill='%23d4849c' opacity='.035' transform='rotate(144 22 22)'/%3E%3Cellipse cx='22' cy='9' rx='5' ry='10' fill='%23d4849c' opacity='.035' transform='rotate(216 22 22)'/%3E%3Cellipse cx='22' cy='9' rx='5' ry='10' fill='%23d4849c' opacity='.035' transform='rotate(288 22 22)'/%3E%3C/svg%3E") center/44px repeat,
+        rgba(255, 255, 255, .55);
+      border-color: rgba(212, 132, 156, .25);
+    }
+
+    /* ─── PETAL accent on active tab ─────────────────────── */
+    .t-tab {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .t-tab::after {
+      content: '\1F338';
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: .55rem;
+      opacity: 0;
+      transition: opacity .3s;
+      pointer-events: none;
+    }
+
+    .t-tab.on::after,
+    .t-tab:hover::after {
+      opacity: .65;
+    }
+
+    .t-tab.on,
+    .t-tab:hover {
+      padding-left: 2.2rem;
+    }
+
+
+
+    /* ─── WOVEN RATTAN texture on wish-box ───────────────── */
+    .wish-box {
+      background-image:
+        repeating-linear-gradient(45deg, rgba(200, 169, 106, .03) 0px, rgba(200, 169, 106, .03) 1px, transparent 1px, transparent 7px),
+        repeating-linear-gradient(-45deg, rgba(200, 169, 106, .03) 0px, rgba(200, 169, 106, .03) 1px, transparent 1px, transparent 7px) !important;
+    }
+
+    /* ─── FLORAL NUMBER accent on wl-num ─────────────────── */
+    .wl-num {
+      position: relative;
+    }
+
+    .wl-num::after {
+      content: '\2733';
+      position: absolute;
+      top: -4px;
+      right: -8px;
+      font-size: .5rem;
+      color: var(--pk2);
+      opacity: .3;
+    }
+
+    /* ─── TROPICAL LEAF bullet on attire rules ───────────── */
+    .at-rules li::before {
+      content: '\1F343' !important;
+      width: auto !important;
+      height: auto !important;
+      background: none !important;
+      transform: none !important;
+      font-size: .7rem;
+    }
+
+    /* ─── PINEAPPLE watermark on attire-band ─────────────── */
+    .attire-band::before {
+      display: none;
+    }
+
+    /* ─── TROPICAL WAVE on attire-band bottom ────────────── */
+    .attire-band::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      pointer-events: none;
+      z-index: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 C360 0 720 40 1080 20 C1260 10 1380 30 1440 20 L1440 40 L0 40Z' fill='%232a4035' opacity='.03'/%3E%3C/svg%3E") bottom/cover no-repeat;
+    }
+
+    /* ─── GOLD SHIMMER on RSVP button ────────────────────── */
+    .w-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .w-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+      transform: translateX(-100%);
+      animation: btnShine 3.5s ease-in-out 1.2s infinite;
+    }
+
+    @keyframes btnShine {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      60%,
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* ─── BOHO BADGE aloha tagline ────────────────────────── */
+    .boho-badge {
+      margin-bottom: 1.8rem;
+    }
+
+    /* ─── PALETTE DOT hover lift ─────────────────────────── */
+    .sw-dot {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .09);
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .sw:hover .sw-dot {
+      transform: scale(1.18) translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .17);
+    }
+
+    /* ─── WISH HEART heartbeat ───────────────────────────── */
+    .w-heart {
+      animation: heartBeat 1.5s ease-in-out infinite;
+    }
+
+    @keyframes heartBeat {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      14% {
+        transform: scale(1.28);
+      }
+
+      28% {
+        transform: scale(1);
+      }
+
+      42% {
+        transform: scale(1.16);
+      }
+
+      70% {
+        transform: scale(1);
+      }
+    }
+
+    /* ─── COCONUT WAVE fade at footer bottom ─────────────── */
+    footer::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 160px;
+      pointer-events: none;
+      z-index: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 80 Q180 40 360 100 Q540 160 720 80 Q900 0 1080 100 Q1260 160 1440 80 L1440 160 L0 160Z' fill='%23b85c7a' opacity='.018'/%3E%3C/svg%3E") bottom/cover no-repeat;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+   MOBILE RESPONSIVE — max-width: 480px
+═══════════════════════════════════════════════════════ */
+    @media(max-width:480px) {
+
+      /* ── General sections ── */
+      .sec {
+        padding: 4rem 1.2rem;
+      }
+
+      .sec-inner {
+        max-width: 100%;
+      }
+
+      .sec-title {
+        font-size: clamp(2.4rem, 13vw, 3.8rem) !important;
+      }
+
+      .eyebrow {
+        font-size: .5rem;
+        letter-spacing: .4em;
+      }
+
+      /* ── Intro ── */
+      .intro-shell {
+        padding: 1.2rem 1rem;
+      }
+
+      .intro-tag {
+        font-size: .5rem;
+        letter-spacing: .4em;
+      }
+
+      .intro-script {
+        font-size: clamp(3.5rem, 18vw, 5.5rem) !important;
+        line-height: 1.4 !important;
+      }
+
+      .intro-sub {
+        font-size: .48rem;
+        letter-spacing: .35em;
+      }
+
+      .intro-cta {
+        font-size: .5rem;
+        padding: .8em 2em;
+        margin-top: 1.8rem;
+      }
+
+      /* ── Hero ── */
+      #hero {
+        min-height: 100svh;
+      }
+
+      .hero-body {
+        padding: 1.5rem 1.2rem;
+        overflow: visible;
+      }
+
+      .hero-eyebrow {
+        font-size: .48rem;
+        letter-spacing: .4em;
+        margin-bottom: .8rem;
+      }
+
+      .hero-first {
+        font-size: clamp(1.8rem, 9vw, 3rem) !important;
+        line-height: 1.4 !important;
+      }
+
+      .hero-name {
+        font-size: clamp(3.2rem, 18vw, 6rem) !important;
+        line-height: 1.3 !important;
+        padding-bottom: .2em !important;
+      }
+
+      .hero-surname {
+        font-size: .48rem;
+        letter-spacing: .4em;
+        margin-top: .8rem;
+      }
+
+      .hdiv {
+        margin: 1.2rem auto;
+      }
+
+      .hdiv-line {
+        width: 40px;
+      }
+
+      .hero-date {
+        font-size: .5rem;
+        letter-spacing: .25em;
+      }
+
+      .hero-venue {
+        font-size: .85rem;
+      }
+
+      .boho-badge {
+        font-size: .4rem;
+        letter-spacing: .25em;
+        padding: .4em 1em;
+      }
+
+      .scroll-hint {
+        bottom: 1.2rem;
+      }
+
+      .canva-row {
+        display: none;
+      }
+
+      /* ── Evening Details ── */
+      .det-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1px;
+      }
+
+      .det-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .det-val {
+        font-size: 1rem;
+      }
+
+      /* ── Countdown ── */
+      .cd-row {
+        gap: .6rem;
+        margin: 2rem 0;
+      }
+
+      .cd-num {
+        font-size: clamp(2.2rem, 12vw, 3.5rem) !important;
+        min-width: 60px !important;
+      }
+
+      .cd-lbl {
+        font-size: .42rem;
+        letter-spacing: .3em;
+      }
+
+      .cd-colon {
+        font-size: 2.5rem;
+      }
+
+      /* ── 18 Traditions ── */
+      .tab-row {
+        width: 100% !important;
+      }
+
+      .t-tab {
+        font-size: .48rem;
+        letter-spacing: .25em;
+        padding: .8rem 1rem;
+      }
+
+      .t-tab.on,
+      .t-tab:hover {
+        padding-left: 1.6rem;
+      }
+
+      .g18 {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: .5rem;
+      }
+
+      .c18 {
+        padding: 1rem .4rem;
+      }
+
+      .n18 {
+        font-size: 1.9rem;
+      }
+
+      .l18 {
+        font-size: .62rem;
+        letter-spacing: .02em;
+      }
+
+      .t-panel-intro {
+        font-size: .92rem;
+        margin-bottom: 1.8rem;
+      }
+
+      /* ── Wishes ── */
+      .wish-box {
+        padding: 1.8rem 1.2rem;
+      }
+
+      .wish-box::before {
+        inset: 6px;
+      }
+
+      .wish-form {
+        flex-direction: column;
+      }
+
+      .w-inp {
+        width: 100%;
+        min-width: unset;
+      }
+
+      #w-name {
+        flex: 0 0 auto !important;
+        height: 44px;
+        order: 1;
+      }
+
+      #w-msg {
+        flex: 0 0 auto !important;
+        height: 120px;
+        order: 2;
+      }
+
+      .w-btn {
+        order: 3;
+      }
+
+      .w-btn {
+        width: 100%;
+        padding: .85rem;
+      }
+
+      .wish-intro {
+        font-size: .92rem;
+      }
+
+      .wl-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .wl-item {
+        padding: .85rem 1rem;
+      }
+
+      .wl-num {
+        font-size: 1.6rem;
+      }
+
+      .wl-title {
+        font-size: .62rem;
+      }
+
+      .wl-desc {
+        font-size: .54rem;
+      }
+
+      /* ── Attire ── */
+      .attire-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+      }
+
+      .attire-frame {
+        aspect-ratio: 4/3;
+        max-height: 220px;
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      .at-head {
+        font-size: 2.4rem;
+        text-align: center;
+      }
+
+      .at-theme {
+        font-size: .95rem;
+        text-align: center;
+        display: block;
+      }
+
+      .at-body {
+        font-size: .65rem;
+        text-align: center;
+      }
+
+      .palette-row {
+        justify-content: center;
+      }
+
+      .at-rules li {
+        font-size: .62rem;
+      }
+
+      .palette-row {
+        gap: .5rem;
+      }
+
+      .sw-dot {
+        width: 28px;
+        height: 28px;
+      }
+
+      /* ── Join the Garden Party (RSVP) ── */
+      .wish-band+div p,
+      .sec p[style*="max-width:520px"] {
+        font-size: 1rem !important;
+        padding: 0 .5rem;
+      }
+
+      /* ── Footer ── */
+      footer {
+        padding: 3rem 1.2rem 2rem;
+      }
+
+      .ft-name {
+        font-size: 3rem;
+      }
+
+      .ft-text {
+        font-size: .44rem;
+        letter-spacing: .25em;
+      }
+
+      .ft-ornament span {
+        font-size: 1rem;
+      }
+
+      /* ── Music player ── */
+      #mp {
+        bottom: 1rem;
+        right: 1rem;
+        padding: .6rem .9rem;
+        gap: .6rem;
+      }
+
+      .mp-info {
+        display: none;
+      }
+
+      /* ── Leaf divider ── */
+      .leaf-divider {
+        margin: 1.2rem 0 2.5rem;
+      }
+
+      .leaf-divider-line {
+        max-width: 60px;
+      }
+
+      /* ── Shell/lei rows ── */
+      .shell-row {
+        gap: .8rem;
+        margin: 1.2rem 0 .5rem;
+      }
+
+      .lei-row {
+        gap: .15rem;
+        margin: 1.2rem 0 .4rem;
+      }
+
+      /* ── Cursor — hide on touch ── */
+      .cursor-dot,
+      .cursor-ring {
+        display: none;
+      }
+
+      /* ── Tilt — disable on touch ── */
+      .tilt {
+        transform: none !important;
+      }
+    }
+
+    /* ── Slightly larger phones / small tablets ── */
+    @media(min-width:481px) and (max-width:768px) {
+      .sec {
+        padding: 4.5rem 1.5rem;
+      }
+
+      .hero-body {
+        padding: 2rem 1.5rem;
+        overflow: visible;
+      }
+
+      .hero-name {
+        font-size: clamp(4rem, 16vw, 8rem) !important;
+        line-height: 1.25 !important;
+        padding-bottom: .18em !important;
+      }
+
+      .hero-first {
+        font-size: clamp(1.8rem, 7vw, 3.5rem) !important;
+      }
+
+      .det-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .g18 {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+
+      .attire-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .wish-form {
+        flex-wrap: wrap;
+      }
+
+      .w-inp[style*="flex:0 0 160px"] {
+        flex: 1 1 100% !important;
+      }
+
+      #mp .mp-info {
+        display: none;
+      }
+
+      .cursor-dot,
+      .cursor-ring {
+        display: none;
+      }
+    }
+
+    /* ─── CLOSING chain ornament ─────────────────────────── */
+    .closing-chain {
+      display: flex;
+      justify-content: center;
+      gap: .22rem;
+      padding: .6rem 0 .8rem;
+      opacity: .3;
+      flex-wrap: wrap;
+      animation: starTwinkle 5s ease-in-out infinite;
+    }
+
+    .closing-chain span {
+      font-size: .7rem;
+    }
+
+    /* ─── WISH-BAND plumeria micro-pattern ───────────────── */
+    .wish-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='40' cy='15' rx='8' ry='15' fill='%23d4849c' opacity='.025' transform='rotate(0 40 40)'/%3E%3Cellipse cx='40' cy='15' rx='8' ry='15' fill='%23d4849c' opacity='.025' transform='rotate(72 40 40)'/%3E%3Cellipse cx='40' cy='15' rx='8' ry='15' fill='%23d4849c' opacity='.025' transform='rotate(144 40 40)'/%3E%3Cellipse cx='40' cy='15' rx='8' ry='15' fill='%23d4849c' opacity='.025' transform='rotate(216 40 40)'/%3E%3Cellipse cx='40' cy='15' rx='8' ry='15' fill='%23d4849c' opacity='.025' transform='rotate(288 40 40)'/%3E%3C/svg%3E") repeat;
+    }
+
+    /* ─── WL-ITEM gold corner accent ─────────────────────── */
+    .wl-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wl-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+      background: linear-gradient(225deg, rgba(200, 169, 106, .12) 0%, transparent 60%);
+    }
+
+    /* ─── SHELL ROW enhanced ─────────────────────────────── */
+    .shell-row span {
+      filter: drop-shadow(0 2px 4px rgba(143, 53, 88, .15));
+    }
+
+    /* ─── INTRO CTA pulse aura ───────────────────────────── */
+    .intro-cta {
+      box-shadow: 0 0 0 0 rgba(184, 92, 122, .3);
+    }
+
+    .intro-cta:not(:hover) {
+      animation: riseIn 1s 2.2s forwards, pulse 2.5s 3.2s infinite, ctaAura 3s 3.5s ease-in-out infinite !important;
+    }
+
+    @keyframes ctaAura {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(184, 92, 122, .2);
+      }
+
+      50% {
+        box-shadow: 0 0 0 10px rgba(184, 92, 122, .0);
+      }
+    }
+
+    /* ─── HIBISCUS stamp hover reveal on wish-box ────────── */
+    .wish-box {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wish-box::after {
+      content: '\1F33A';
+      position: absolute;
+      top: .6rem;
+      right: .7rem;
+      font-size: 1.5rem;
+      opacity: .07;
+      transform: rotate(15deg);
+      pointer-events: none;
+      animation: wmSpin 22s linear infinite;
+    }
+
+    /* ─── BATIK diagonal weave on countdown ──────────────── */
+    .countdown-band {
+      background: linear-gradient(160deg, var(--dark1) 0%, var(--dark3) 100%);
+    }
+
+    /* ─── TIKI COLUMN stripes on eighteen section ────────── */
+
+
+    /* ─── DET CARD bottom leaf ornament ─────────────────── */
+    .det-bottom-leaf {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: .18;
+      font-size: .65rem;
+      letter-spacing: .35em;
+      color: var(--leaf);
+    }
+
+    .background-flower {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the image perfectly */
+    width: 350px; /* Adjust this to make the flower bigger or smaller */
+    max-width: 100vw; /* Prevents the image from causing horizontal scroll or cut-offs on mobile/iOS */
+    opacity: 0.8; /* Sets the transparency to 80% */
+    z-index: -1; /* Forces the image to sit behind your text */
+    pointer-events: none; /* Ensures the image doesn't block any clicks/taps */
+   }
+
+   /* ─── INTRO FLOWER BACKGROUND & ANIMATION ────────────────────────── */
+    .flower-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      pointer-events: none;
+      width: 600px;
+      max-width: 90vw;
+      /* Entrance first, then breathe loop hands off */
+      opacity: 0;
+      animation: flowerEntrance 2.2s 0.6s cubic-bezier(.16,1,.3,1) forwards;
+    }
+
+    /* After the entrance resolves, the breathe loop takes over via a second animation */
+    .flower-container.bloomed {
+      opacity: 1;
+      animation: flowerBreathe 15s ease-in-out infinite;
+    }
+
+    .flower-image {
+      width: 100%;
+      height: auto;
+      /* Subtle filter shimmer on the image itself */
+      filter: drop-shadow(0 0 28px rgba(212,132,156,.18)) saturate(1.1);
+    }
+
+    /* ─── ENTRANCE: pure soft fade + gentle rise, no overshoot ── */
+    @keyframes flowerEntrance {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -46%) scale(0.88);
+        filter: blur(8px) saturate(.5);
+      }
+      40% {
+        opacity: 0.3;
+        filter: blur(3px) saturate(.8);
+      }
+      100% {
+        opacity: 0.68;
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(0px) saturate(1.1);
+      }
+    }
+
+    /* ─── BREATHE LOOP (takes over after entrance via JS class swap) ── */
+    @keyframes flowerBreathe {
+      0%   { transform: translate(-50%, -50%) scale(1)    rotate(0deg);   opacity: 0.68; }
+      50%  { transform: translate(-50%, -50%) scale(1.08) rotate(4deg);   opacity: 0.74; }
+      100% { transform: translate(-50%, -50%) scale(1)    rotate(0deg);   opacity: 0.68; }
+    }
+
+    /* ─── MAKE INTRO TAG AND SUB-TEXT MORE VISIBLE ────────────────────────── */
+    /* This targets only the tag and sub-info, leaving the script name alone */
+    .intro-tag, 
+    .intro-sub {
+      /* The soft white glow */
+      text-shadow: 0px 2px 10px rgba(255, 255, 255, 0.9), 
+                   0px 0px 20px rgba(255, 255, 255, 0.8);
+      
+      /* Keeps them readable and above the flower */
+      font-weight: 600; 
+      position: relative;
+      z-index: 2; 
+    }
+    
+    /* Note: .intro-script is NOT included here, 
+       so it will keep its original pink gradient look!
+    */
+
+
+    /* ─── TRADITIONS CORNER FLOWERS ─────────────────────── */
+    .trad-flower {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.22;
+      filter: saturate(0.6) brightness(1.1) hue-rotate(5deg);
+    }
+    .trad-flower img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* ─── VENUE SECTION ──────────────────────────────────── */
+    .venue-band {
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(42, 64, 53, .07) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 80%, rgba(184, 92, 122, .09) 0%, transparent 55%),
+        linear-gradient(160deg, var(--dark2) 0%, var(--dark1) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .venue-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    @media(max-width:760px) {
+      .venue-layout { grid-template-columns: 1fr; }
+    }
+    .venue-map-frame {
+      aspect-ratio: 4/3;
+      border: 1px solid rgba(212, 132, 156, .3);
+      background: rgba(255,255,255,.45);
+      position: relative;
+      overflow: hidden;
+    }
+    .venue-map-frame::before,
+    .venue-map-frame::after {
+      content: '';
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-color: rgba(212,132,156,.45);
+      border-style: solid;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .venue-map-frame::before { top:10px;left:10px;border-width:1px 0 0 1px; }
+    .venue-map-frame::after  { bottom:10px;right:10px;border-width:0 1px 1px 0; }
+    .venue-map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .venue-info-head {
+      font-family: var(--ff-script);
+      font-size: 3.4rem;
+      color: var(--pk3);
+      line-height: 1;
+      display: block;
+      margin-bottom: .3rem;
+    }
+    .venue-info-sub {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--sv2);
+      display: block;
+      margin-bottom: 2rem;
+    }
+    .venue-detail-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+    .venue-detail-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: .85rem 0;
+      border-bottom: 1px solid rgba(212,132,156,.1);
+      font-family: var(--ff-sans);
+      font-weight: 200;
+      font-size: .72rem;
+      color: var(--sv1);
+      line-height: 1.55;
+    }
+    .venue-detail-list li:last-child { border-bottom: none; }
+    .vd-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(212,132,156,.22);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: .05rem;
+    }
+    .vd-icon svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: var(--pk2);
+      stroke-width: 1.5;
+    }
+    .vd-label {
+      font-family: var(--ff-sans);
+      font-size: .47rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--pk2);
+      display: block;
+      margin-bottom: .2rem;
+    }
+    .venue-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      font-family: var(--ff-sans);
+      font-weight: 300;
+      font-size: .56rem;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--pk3);
+      text-decoration: none;
+      border: 1px solid rgba(212,132,156,.38);
+      padding: .85em 2.2em;
+      transition: all .35s;
+      position: relative;
+      overflow: hidden;
+    }
+    .venue-cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+      transform: translateX(-100%);
+      animation: btnShine 3.5s ease-in-out 1s infinite;
+    }
+    .venue-cta:hover {
+      background: rgba(212,132,156,.1);
+      border-color: var(--pk2);
+    }
+    .venue-note {
+      margin-top: 1.8rem;
+      border: 1px solid rgba(212,132,156,.18);
+      background: rgba(255,255,255,.45);
+      padding: 1.4rem 1.6rem;
+      position: relative;
+    }
+    .venue-note::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--pk2), transparent);
+    }
+    .venue-note p {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: .92rem;
+      color: var(--sv2);
+      line-height: 1.7;
+    }
+    @media(max-width:480px) {
+      .venue-info-head { font-size: 2.6rem; }
+      .venue-info-sub  { font-size: .92rem; }
+      .venue-detail-list li { font-size: .66rem; }
+    }
+
+    .trad-flower.top-right {
+      top: -60px;
+      right: -60px;
+      animation: flowerSpin1 20s linear infinite;
+    }
+    .trad-flower.bot-left {
+      bottom: -60px;
+      left: -60px;
+      animation: flowerSpin2 26s linear infinite;
+      transform-origin: center center;
+    }
+    @keyframes flowerSpin1 {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes flowerSpin2 {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       ✨ ENHANCED BOHO HAWAIIAN — PINK & SILVER ELEGANCE ✨
+    ═══════════════════════════════════════════════════════ */
+
+    /* ─── SILVER SHIMMER OVERLAY on body ─────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse at 15% 25%, rgba(220,210,230,.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 75%, rgba(212,132,156,.07) 0%, transparent 55%);
+      animation: silverDrift 14s ease-in-out infinite alternate;
+    }
+    @keyframes silverDrift {
+      0%   { opacity: .6; }
+      100% { opacity: 1; }
+    }
+
+    /* ─── GLASSMORPHISM upgrade on mp (music player) ──────── */
+    #mp {
+      backdrop-filter: blur(20px) saturate(1.6);
+      background: rgba(253,240,244,.82) !important;
+      border: 1px solid rgba(230,180,200,.5) !important;
+      box-shadow: 0 8px 32px rgba(143,53,88,.12), inset 0 1px 0 rgba(255,255,255,.6);
+      border-radius: 2px;
+      transition: box-shadow .4s;
+    }
+    #mp:hover {
+      box-shadow: 0 12px 40px rgba(143,53,88,.2), inset 0 1px 0 rgba(255,255,255,.7);
+    }
+
+    /* ─── INTRO: pearl shimmer border ────────────────────── */
+    .intro-shell {
+      position: relative;
+      z-index: 2;
+    }
+    .intro-shell::before {
+      content: '';
+      position: absolute;
+      top: -30px; left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, rgba(212,132,156,.5), transparent);
+      animation: introLineDrop 1.2s .3s forwards;
+      opacity: 0;
+    }
+    @keyframes introLineDrop {
+      to { opacity: 1; }
+    }
+
+    /* ─── INTRO CTA: silver-pink gradient border ──────────── */
+    .intro-cta {
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(212,132,156,.04)) !important;
+      border-image: linear-gradient(135deg, rgba(200,169,106,.6), rgba(212,132,156,.7), rgba(200,169,106,.6)) 1 !important;
+      box-shadow: 0 0 30px rgba(184,92,122,.08), inset 0 1px 0 rgba(255,255,255,.15);
+      letter-spacing: .55em !important;
+    }
+
+    /* ─── HERO: layered glow halo ─────────────────────────── */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(212,132,156,.09) 0%, rgba(200,169,106,.04) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 2;
+      animation: haloBreath 9s ease-in-out infinite;
+    }
+    @keyframes haloBreath {
+      0%,100% { transform: translate(-50%,-50%) scale(1); opacity: .7; }
+      50%      { transform: translate(-50%,-50%) scale(1.15); opacity: 1; }
+    }
+
+    /* ─── HERO NAME: silver-gold gradient enhancement ─────── */
+    .hero-name {
+      background: linear-gradient(160deg, #8f3558 0%, #c4637f 30%, #d4849c 55%, #b89ab0 80%, #8f3558 100%) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-size: 200% auto;
+      animation: heroNameDrift 8s ease-in-out infinite, nameShimmer 5s linear infinite !important;
+    }
+    @keyframes nameShimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* ─── SECTION TITLE silver shimmer ───────────────────── */
+    .sec-title.light {
+      background: linear-gradient(135deg, var(--pk3) 0%, #c87090 40%, #c0a8c0 70%, var(--pk3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% auto;
+      animation: titleShimmer 6s linear infinite;
+    }
+    @keyframes titleShimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* ─── DET CARDS: glass + silver top bar ───────────────── */
+    .det-card {
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.62) !important;
+      border: 1px solid rgba(230,190,210,.45) !important;
+      box-shadow: 0 4px 24px rgba(143,53,88,.07), inset 0 1px 0 rgba(255,255,255,.7);
+      transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s !important;
+    }
+    .det-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(200,169,106,.55), rgba(212,132,156,.7), rgba(200,169,106,.55), transparent);
+      background-size: 200% auto;
+      animation: detTopBar 4s linear infinite;
+    }
+    @keyframes detTopBar {
+      0%   { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    .det-card:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: 0 16px 40px rgba(143,53,88,.15), inset 0 1px 0 rgba(255,255,255,.8) !important;
+    }
+
+    /* ─── COUNTDOWN: glowing silver digits ────────────────── */
+    .cd-unit {
+      position: relative;
+    }
+    .cd-unit::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 4px;
+      background: radial-gradient(ellipse, rgba(200,169,106,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cd-num {
+      background: linear-gradient(160deg, #8f3558 0%, #d4849c 45%, #c0b0c8 75%, #8f3558 100%) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-size: 200% auto;
+      animation: numPulse 4s ease-in-out infinite, nameShimmer 6s linear infinite !important;
+      filter: none !important;
+    }
+
+    /* ─── C18 CARDS: glass effect + shimmer ───────────────── */
+    .c18 {
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(212,132,156,.28) !important;
+      box-shadow: 0 2px 16px rgba(143,53,88,.05), inset 0 1px 0 rgba(255,255,255,.6);
+      transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s, border-color .3s !important;
+    }
+    .c18:hover {
+      border-color: rgba(212,132,156,.6) !important;
+      box-shadow: 0 8px 28px rgba(143,53,88,.13), inset 0 1px 0 rgba(255,255,255,.8) !important;
+      transform: translateY(-5px) !important;
+    }
+    .n18 {
+      background: linear-gradient(135deg, var(--pk1) 0%, var(--pk2) 50%, #b0a0be 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .c18.money .n18 {
+      background: linear-gradient(135deg, #a07840 0%, var(--gold) 50%, #e8d8a0 75%, var(--gold) 100%) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-size: 200% auto;
+      animation: nameShimmer 5s linear infinite;
+    }
+
+    /* ─── TAB BUTTONS: enhanced ───────────────────────────── */
+    .t-tab {
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212,132,156,.22) !important;
+      transition: all .35s cubic-bezier(.16,1,.3,1) !important;
+      box-shadow: 0 2px 12px rgba(143,53,88,.05);
+    }
+    .t-tab:hover, .t-tab.on {
+      border-color: rgba(212,132,156,.5) !important;
+      box-shadow: 0 4px 20px rgba(143,53,88,.12) !important;
+    }
+    .t-tab.on {
+      background: linear-gradient(135deg, rgba(143,53,88,.1), rgba(212,132,156,.08)) !important;
+    }
+
+    /* ─── WISH BOX: pearl glass ───────────────────────────── */
+    .wish-box {
+      backdrop-filter: blur(14px) saturate(1.4) !important;
+      background: rgba(255,255,255,.65) !important;
+      border: 1px solid rgba(230,190,210,.5) !important;
+      box-shadow: 0 8px 32px rgba(143,53,88,.09), inset 0 1px 0 rgba(255,255,255,.7) !important;
+    }
+    .wish-box::before {
+      border-color: rgba(212,132,156,.15) !important;
+    }
+
+    /* ─── INPUT fields: softer focus glow ─────────────────── */
+    .w-inp:focus {
+      border-color: var(--pk2) !important;
+      box-shadow: 0 0 0 3px rgba(184,92,122,.1) !important;
+      background: rgba(255,255,255,.9) !important;
+    }
+
+    /* ─── WISH ENTRY: slide-in shimmer ────────────────────── */
+    .wish-entry {
+      border-bottom: 1px solid rgba(212,132,156,.12) !important;
+      transition: background .3s;
+    }
+    .wish-entry:hover {
+      background: rgba(248,232,238,.5);
+      border-radius: 2px;
+    }
+
+    /* ─── ATTIRE FRAME: silver corner enhancement ─────────── */
+    .attire-frame {
+      box-shadow: 0 8px 32px rgba(143,53,88,.1), inset 0 1px 0 rgba(255,255,255,.5);
+    }
+    .attire-frame::before, .attire-frame::after {
+      border-color: rgba(200,169,106,.55) !important;
+    }
+
+    /* ─── VENUE MAP FRAME: glass upgrade ─────────────────── */
+    .venue-map-frame {
+      box-shadow: 0 8px 32px rgba(143,53,88,.12);
+      border: 1px solid rgba(212,132,156,.35) !important;
+    }
+    .venue-note {
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,.55) !important;
+      box-shadow: 0 2px 16px rgba(143,53,88,.06);
+    }
+
+    /* ─── FOOTER: silver glass ────────────────────────────── */
+    footer {
+      background: linear-gradient(160deg, #f8e4ec 0%, #f0d4e2 50%, #ece0ea 100%) !important;
+      border-top: 1px solid rgba(200,169,106,.25) !important;
+    }
+    .ft-name {
+      background: linear-gradient(135deg, var(--pk1), var(--pk2), #c0a8c0, var(--pk2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% auto;
+      animation: nameShimmer 6s linear infinite;
+      opacity: 1 !important;
+    }
+
+    /* ─── LEAF CORNER ORNAMENTS: glow ────────────────────── */
+    .leaf-corner {
+      filter: drop-shadow(0 2px 8px rgba(42,64,53,.25));
+    }
+
+    /* ─── PLUMERIA WATERMARKS: soft pulse ─────────────────── */
+    .plumeria-wm {
+      animation: wmSpin 30s linear infinite, plumeriaPulse 6s ease-in-out infinite !important;
+    }
+    @keyframes plumeriaPulse {
+      0%,100% { opacity: .06; }
+      50%      { opacity: .12; }
+    }
+
+    /* ─── SILVER SPARKLES floating (extra layer) ──────────── */
+    .sparkle-field {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+    .sp {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(220,200,230,.9);
+      box-shadow: 0 0 6px 2px rgba(200,160,210,.6);
+      opacity: 0;
+      animation: sparkleFloat linear infinite;
+    }
+    @keyframes sparkleFloat {
+      0%   { opacity: 0; transform: translateY(0) scale(0); }
+      10%  { opacity: 1; transform: translateY(-8px) scale(1); }
+      80%  { opacity: .6; }
+      100% { opacity: 0; transform: translateY(-80px) scale(.3); }
+    }
+
+    /* ─── INTRO HIBISCUS: silver-pink gradient petals ──────── */
+    .intro-hibiscus ellipse {
+      filter: drop-shadow(0 0 8px rgba(212,132,156,.4));
+    }
+
+    /* ─── ROPE BORDER: shimmer trail ─────────────────────── */
+    .rope-border::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(200,169,106,.35), rgba(212,132,156,.4), transparent);
+      animation: ropeSweep 8s linear infinite;
+      pointer-events: none;
+      z-index: 10;
+    }
+    @keyframes ropeSweep {
+      0%   { left: -60%; }
+      100% { left: 120%; }
+    }
+
+    /* ─── SCROLL HINT: enhanced ───────────────────────────── */
+    .scroll-hint span {
+      background: linear-gradient(135deg, var(--sv1), var(--pk2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .scroll-line {
+      background: linear-gradient(to bottom, rgba(200,169,106,.6), rgba(212,132,156,.4), transparent) !important;
+    }
+
+    /* ─── BOHO BADGE: gold shimmer ────────────────────────── */
+    .boho-badge {
+      border-image: linear-gradient(135deg, rgba(200,169,106,.5), rgba(212,132,156,.6), rgba(200,169,106,.5)) 1;
+      background: linear-gradient(135deg, rgba(200,169,106,.06), rgba(212,132,156,.04));
+      box-shadow: 0 0 20px rgba(200,169,106,.08);
+    }
+
+    /* ─── WL ITEMS: hover glass ───────────────────────────── */
+    .wl-item {
+      transition: all .3s cubic-bezier(.16,1,.3,1) !important;
+      backdrop-filter: blur(4px);
+    }
+    .wl-item:hover {
+      background: rgba(255,255,255,.7) !important;
+      border-color: rgba(212,132,156,.45) !important;
+      transform: translateX(3px);
+      box-shadow: 0 4px 16px rgba(143,53,88,.07);
+    }
+
+    /* ─── WAVE DIVIDER enhancement ────────────────────────── */
+    .hero-wave svg {
+      filter: drop-shadow(0 -2px 8px rgba(212,132,156,.1));
+    }
+
+    /* ─── SECTION BACKGROUNDS: faint silver bokeh ─────────── */
+    .countdown-band, .eighteen-band {
+      position: relative;
+    }
+    .countdown-band::after {
+      content: '' !important;
+      background: none !important;
+    }
+
+    /* ─── PINK GLOW on section eyebrows ───────────────────── */
+    .eyebrow.pink {
+      text-shadow: 0 0 20px rgba(184,92,122,.2);
+    }
+    .eyebrow.silver {
+      text-shadow: 0 0 20px rgba(180,160,190,.2);
+    }
+
+    /* ─── SILVER FOIL ACCENT DIVIDERS ────────────────────── */
+    .leaf-divider-line.pink, .leaf-divider-line.sv {
+      position: relative;
+    }
+    .leaf-divider-line.pink::after, .leaf-divider-line.sv::after {
+      content: '';
+      position: absolute;
+      top: -1px; left: 0; right: 0;
+      height: 3px;
+      background: inherit;
+      filter: blur(3px);
+      opacity: .5;
+    }
+
+    /* ─── VENUE CTA: gold border pulse ───────────────────── */
+    .venue-cta {
+      box-shadow: 0 0 0 0 rgba(184,92,122,.15), 0 2px 16px rgba(143,53,88,.08);
+      transition: all .35s cubic-bezier(.16,1,.3,1) !important;
+    }
+    .venue-cta:hover {
+      box-shadow: 0 0 0 4px rgba(184,92,122,.08), 0 8px 24px rgba(143,53,88,.15) !important;
+      transform: translateY(-2px);
+    }
+
+    /* ─── MAGICAL ENTRANCE for revealed elements ──────────── */
+    .reveal {
+      transition: opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1) !important;
+    }
+    .reveal.in {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* ─── SILVER MIST ambient glow behind hero text ────────── */
+    .hero-body::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(220,200,230,.15) 0%, transparent 70%);
+      pointer-events: none;
+      animation: mistPulse 8s ease-in-out infinite;
+    }
+    @keyframes mistPulse {
+      0%,100% { opacity: .4; transform: translate(-50%,-50%) scale(.95); }
+      50%      { opacity: 1; transform: translate(-50%,-50%) scale(1.05); }
+    }
+
+    /* ─── CLOSING SECTION CTA: gold shimmer ──────────────── */
+    a[href="#"][style*="RSVP"] {
+      box-shadow: 0 0 24px rgba(184,92,122,.1);
+    }
+
+    /* ─── SCROLLBAR: custom pink-silver ──────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--dark1); }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, var(--pk2), #c0a8c0);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--pk1); }
+
+    /* ─── SELECTION color ─────────────────────────────────── */
+    ::selection {
+      background: rgba(184,92,122,.2);
+      color: var(--pk1);
+    }
+
+    /* ─── DET VALUE text: subtle gradient ─────────────────── */
+    .det-val {
+      background: linear-gradient(135deg, var(--sv3) 0%, #6b3a5a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ─── LEAF DIVIDER ornament: spin ─────────────────────── */
+    .leaf-divider svg {
+      animation: leafOrnSpin 20s linear infinite;
+      filter: drop-shadow(0 0 4px rgba(212,132,156,.2));
+    }
+    @keyframes leafOrnSpin {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cur-dot"></div>
+  <div class="cursor-ring" id="cur-ring"></div>
+
+  <!-- Silver sparkle field -->
+  <div class="sparkle-field" id="sparkle-field"></div>
+
+  <!-- Floating plumeria petals -->
+  <div class="petal-field" id="petal-field"></div>
+
+  <!-- Audio -->
+  <audio id="bgm" loop>
+    <source src="https://cdn.pixabay.com/audio/2022/10/16/audio_12235612b3.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Music player -->
+  <div id="mp">
+    <button id="mp-btn" onclick="toggleMusic()" aria-label="Toggle music">
+      <svg id="ico-play" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+      <svg id="ico-pause" viewBox="0 0 24 24" style="display:none">
+        <rect x="6" y="5" width="4" height="14" />
+        <rect x="14" y="5" width="4" height="14" />
+      </svg>
+    </button>
+    <div class="mp-info">
+      <span class="mp-title">♩ Debut Playlist</span>
+      <span>Margaux Aiyenn · Sweet Eighteen</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════ INTRO ═══════════════ -->
+  <div id="intro">
+    <canvas id="intro-canvas"></canvas>
+    <div class="intro-shell">
+      <p class="intro-tag">You are warmly invited to the debut of</p>
+      
+      <div class="flower-container">
+        <img src="flowerintro.png" alt="Transparent Flower" class="flower-image">
+     </div>
+      
+      <span class="intro-script">Margaux</span>
+      <div class="intro-rule"></div>
+      <p class="intro-sub">Sweet Eighteen · June 9, 2026</p>
+      <button class="intro-cta" onclick="enterSite()">Enter the Garden ❆</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════ MAIN ═══════════════ -->
+  <div id="main" style="opacity:0;transition:opacity 1.5s ease;">
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+      <canvas id="hero-canvas"></canvas>
+      <div class="rattan-overlay"></div>
+      <div class="hero-shimmer"></div>
+
+      <!-- Tiki torch left -->
+      <svg class="hero-tiki l" viewBox="0 0 24 80" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="28" width="4" height="46" rx="2" fill="#c8a96a" />
+        <rect x="8" y="24" width="8" height="8" rx="1" fill="#8f6030" />
+        <ellipse cx="12" cy="20" rx="7" ry="10" fill="#e87020" opacity=".7" class="torch-flame" />
+        <ellipse cx="12" cy="16" rx="4" ry="7" fill="#f5a840" opacity=".8" class="torch-flame" />
+        <ellipse cx="12" cy="13" rx="2" ry="4" fill="#ffe0a0" opacity=".9" class="torch-flame" />
+      </svg>
+      <!-- Tiki torch right -->
+      <svg class="hero-tiki r" viewBox="0 0 24 80" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="28" width="4" height="46" rx="2" fill="#c8a96a" />
+        <rect x="8" y="24" width="8" height="8" rx="1" fill="#8f6030" />
+        <ellipse cx="12" cy="20" rx="7" ry="10" fill="#e87020" opacity=".7" class="torch-flame" />
+        <ellipse cx="12" cy="16" rx="4" ry="7" fill="#f5a840" opacity=".8" class="torch-flame" />
+        <ellipse cx="12" cy="13" rx="2" ry="4" fill="#ffe0a0" opacity=".9" class="torch-flame" />
+      </svg>
+
+      <!-- Leaf corner accents -->
+      <svg class="leaf-corner tl" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 5 Q40 8 55 40 Q30 35 5 5Z" fill="#2a4035" />
+        <path d="M5 5 Q8 40 40 55 Q35 30 5 5Z" fill="#2a4035" opacity=".7" />
+        <path d="M5 5 Q25 15 35 35" stroke="#2a4035" stroke-width="1.5" fill="none" opacity=".4" />
+      </svg>
+      <svg class="leaf-corner tr" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 5 Q40 8 55 40 Q30 35 5 5Z" fill="#2a4035" />
+        <path d="M5 5 Q8 40 40 55 Q35 30 5 5Z" fill="#2a4035" opacity=".7" />
+      </svg>
+      <svg class="leaf-corner bl" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 5 Q40 8 55 40 Q30 35 5 5Z" fill="#2a4035" />
+        <path d="M5 5 Q8 40 40 55 Q35 30 5 5Z" fill="#2a4035" opacity=".7" />
+      </svg>
+      <svg class="leaf-corner br" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 5 Q40 8 55 40 Q30 35 5 5Z" fill="#2a4035" />
+        <path d="M5 5 Q8 40 40 55 Q35 30 5 5Z" fill="#2a4035" opacity=".7" />
+      </svg>
+
+      <!-- Canva guide top -->
+      <div class="canva-row top">
+        <div class="canva-slot"><span>Canva floral<br>top-left</span></div>
+        <div class="canva-slot"><span>Canva floral<br>top-center</span></div>
+        <div class="canva-slot"><span>Canva floral<br>top-right</span></div>
+      </div>
+
+      <!-- Left photos -->
+      <div class="side-strip left">
+        <div class="ph-frame tilt">
+          <div class="ph-inner">
+            <div class="ph-icon"><svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg></div><span class="ph-label">photo.png</span>
+          </div>
+        </div>
+        <div class="ph-frame tilt">
+          <div class="ph-inner">
+            <div class="ph-icon"><svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg></div><span class="ph-label">photo.png</span>
+          </div>
+        </div>
+        <div class="ph-frame tilt">
+          <div class="ph-inner">
+            <div class="ph-icon"><svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg></div><span class="ph-label">photo.png</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero body -->
+      <div class="hero-body">
+        <span class="hero-eyebrow">the eighteenth birthday of</span>
+        <span class="hero-first">Margaux</span>
+        <span class="hero-name">Aiyenn</span>
+        <span class="hero-surname">Sweet Eighteen · A Boho Hawaiian Evening</span>
+        <div class="hdiv">
+          <div class="hdiv-line l"></div>
+          <span class="hdiv-leaf">🌺</span>
+          <div class="hdiv-line r"></div>
+        </div>
+        <span class="hero-date">June 9, 2026 · 6:00 in the Evening</span>
+        <p class="hero-venue">Lumiera Spring Resort — Lakewood, Los Baños, Laguna</p>
+        <div style="display:flex;justify-content:center;">
+          <div class="boho-badge">🌺 Boho Hawaiian Evening 🌺</div>
+        </div>
+      </div>
+
+      <!-- Wave bottom -->
+      <div class="hero-wave">
+        <svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0 30 C240 52 480 8 720 30 C960 52 1200 8 1440 30 L1440 52 L0 52Z" fill="#fdf0f4" opacity=".6" />
+          <path d="M0 38 C360 18 720 52 1080 30 C1260 20 1380 42 1440 38 L1440 52 L0 52Z" fill="#fdf0f4" />
+        </svg>
+      </div>
+
+      <!-- Right photos -->
+      <div class="side-strip right">
+        <div class="ph-frame tilt">
+          <div class="ph-inner">
+            <div class="ph-icon"><svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg></div><span class="ph-label">photo.png</span>
+          </div>
+        </div>
+        <div class="ph-frame tilt">
+          <div class="ph-inner">
+            <div class="ph-icon"><svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg></div><span class="ph-label">photo.png</span>
+          </div>
+        </div>
+        <div class="ph-frame tilt">
+          <div class="ph-inner">
+            <div class="ph-icon"><svg viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg></div><span class="ph-label">photo.png</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Canva guide bottom -->
+      <div class="canva-row bot">
+        <div class="canva-slot"><span>Canva floral<br>bottom-left</span></div>
+        <div class="canva-slot"><span>Canva floral<br>bottom-center</span></div>
+        <div class="canva-slot"><span>Canva floral<br>bottom-right</span></div>
+      </div>
+
+      <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ── DETAILS ── -->
+    <div class="sec details-band rope-border" style="position:relative;overflow:hidden;">
+
+      <div class="rattan-sec"></div>
+      <div class="tropical-stripe"></div>
+      <div class="tropical-stripe" style="animation-delay:-9s;opacity:.6;"></div>
+      <!-- Plumeria watermark -->
+      <svg class="plumeria-wm" style="width:360px;height:360px;top:50%;left:50%;" viewBox="0 0 200 200"
+        xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(0 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(72 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(144 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(216 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(288 100 100)" />
+        <circle cx="100" cy="100" r="20" fill="#c8a96a" />
+      </svg>
+      <div class="sec-inner" style="position:relative;z-index:5;">
+        <span class="eyebrow pink reveal">The Evening</span>
+        <span class="sec-title light tiki-glow reveal d1">Evening Details</span>
+        <div class="leaf-divider reveal d2">
+          <div class="leaf-divider-line pink"></div>
+          <svg width="28" height="28" viewBox="0 0 200 200" style="flex-shrink:0;opacity:.7">
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(0 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#b85c7a" opacity=".8" transform="rotate(72 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(144 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#b85c7a" opacity=".8" transform="rotate(216 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(288 100 100)" />
+            <circle cx="100" cy="100" r="16" fill="#c8a96a" />
+          </svg>
+          <div class="leaf-divider-line pink r"></div>
+        </div>
+        <div class="det-grid reveal d3">
+          <div class="det-card tilt">
+            <svg class="hibiscus-stamp" viewBox="0 0 200 200">
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(0 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(72 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(144 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(216 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(288 100 100)" />
+              <circle cx="100" cy="100" r="20" fill="#c8a96a" />
+            </svg>
+            <svg class="det-icon" viewBox="0 0 200 200">
+              <ellipse cx="100" cy="40" rx="18" ry="34" fill="#d4849c" opacity=".6" transform="rotate(0 100 100)" />
+              <ellipse cx="100" cy="40" rx="18" ry="34" fill="#b85c7a" opacity=".5" transform="rotate(72 100 100)" />
+              <ellipse cx="100" cy="40" rx="18" ry="34" fill="#d4849c" opacity=".6" transform="rotate(144 100 100)" />
+              <ellipse cx="100" cy="40" rx="18" ry="34" fill="#b85c7a" opacity=".5" transform="rotate(216 100 100)" />
+              <ellipse cx="100" cy="40" rx="18" ry="34" fill="#d4849c" opacity=".6" transform="rotate(288 100 100)" />
+              <circle cx="100" cy="100" r="15" fill="#c8a96a" opacity=".8" />
+            </svg>
+            <span class="det-lbl">Celebration</span>
+            <p class="det-val">Sweet Eighteen<br>Debut of Margaux Aiyenn</p>
+          </div>
+          <div class="det-card tilt">
+            <svg class="hibiscus-stamp" viewBox="0 0 200 200">
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(0 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(72 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(144 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(216 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(288 100 100)" />
+              <circle cx="100" cy="100" r="20" fill="#c8a96a" />
+            </svg>
+            <svg class="det-icon" viewBox="0 0 50 50" fill="none" stroke="#b8c6cf" stroke-width="1.5">
+              <rect x="8" y="10" width="34" height="32" rx="3" />
+              <line x1="8" y1="18" x2="42" y2="18" />
+              <line x1="17" y1="6" x2="17" y2="14" />
+              <line x1="33" y1="6" x2="33" y2="14" />
+              <circle cx="25" cy="30" r="5" stroke="#d4849c" />
+            </svg>
+            <span class="det-lbl">Date &amp; Time</span>
+            <p class="det-val">June 9, 2026<br>6:00 in the Evening</p>
+          </div>
+          <div class="det-card tilt">
+            <svg class="hibiscus-stamp" viewBox="0 0 200 200">
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(0 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(72 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(144 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(216 100 100)" />
+              <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(288 100 100)" />
+              <circle cx="100" cy="100" r="20" fill="#c8a96a" />
+            </svg>
+            <svg class="det-icon" viewBox="0 0 50 50" fill="none">
+              <!-- palm tree -->
+              <line x1="25" y1="44" x2="25" y2="22" stroke="#2a4035" stroke-width="2.5" stroke-linecap="round" />
+              <path d="M25 22 Q18 14 10 16 Q16 20 25 22Z" fill="#2a4035" opacity=".8" />
+              <path d="M25 22 Q32 14 40 16 Q34 20 25 22Z" fill="#2a4035" opacity=".8" />
+              <path d="M25 22 Q20 10 22 4 Q24 12 25 22Z" fill="#2a4035" opacity=".7" />
+              <path d="M25 22 Q30 10 28 4 Q26 12 25 22Z" fill="#2a4035" opacity=".7" />
+              <ellipse cx="25" cy="44" rx="8" ry="2" fill="#c8a96a" opacity=".3" />
+            </svg>
+            <span class="det-lbl">Venue</span>
+            <p class="det-val">Lumiera Spring Resort<br>Lakewood, Los Baños, Laguna</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COUNTDOWN ── -->
+    <div class="sec countdown-band rope-border" style="position:relative;overflow:hidden;">
+      <canvas id="water-canvas"></canvas>
+
+      <div class="rattan-sec"></div>
+      <div class="sec-inner" style="text-align:center;position:relative;z-index:5;">
+        <span class="eyebrow silver reveal">Counting Down</span>
+        <span class="sec-title light tiki-glow reveal d1">Days Until the Bloom</span>
+        <div class="leaf-divider reveal d2">
+          <div class="leaf-divider-line sv"></div>
+          <svg width="22" height="22" viewBox="0 0 40 40" style="opacity:.6">
+            <path d="M20 2 Q24 20 20 38 Q16 20 20 2Z" fill="#2a4035" />
+            <path d="M2 20 Q20 24 38 20 Q20 16 2 20Z" fill="#2a4035" />
+          </svg>
+          <div class="leaf-divider-line sv r"></div>
+        </div>
+        <div class="cd-row reveal d3">
+          <div class="cd-unit"><span class="cd-num" id="cd-d">--</span>
+            <div class="cd-lbl">Days</div>
+          </div>
+          <div class="cd-colon">:</div>
+          <div class="cd-unit"><span class="cd-num" id="cd-h">--</span>
+            <div class="cd-lbl">Hours</div>
+          </div>
+          <div class="cd-colon">:</div>
+          <div class="cd-unit"><span class="cd-num" id="cd-m">--</span>
+            <div class="cd-lbl">Minutes</div>
+          </div>
+          <div class="cd-colon">:</div>
+          <div class="cd-unit"><span class="cd-num" id="cd-s">--</span>
+            <div class="cd-lbl">Seconds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── VENUE ── -->
+    <div class="sec venue-band rope-border" style="position:relative;overflow:hidden;">
+      <div class="tropical-stripe"></div>
+      <div class="tropical-stripe" style="animation-delay:-7s;opacity:.6;"></div>
+      <!-- Plumeria watermark -->
+      <svg class="plumeria-wm" style="width:320px;height:320px;top:50%;left:85%;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(0 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(72 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(144 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(216 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(288 100 100)" />
+        <circle cx="100" cy="100" r="20" fill="#c8a96a" />
+      </svg>
+      <!-- leaf corner accents -->
+      <svg class="leaf-corner tl" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 5 Q40 8 55 40 Q30 35 5 5Z" fill="#2a4035" />
+        <path d="M5 5 Q8 40 40 55 Q35 30 5 5Z" fill="#2a4035" opacity=".7" />
+      </svg>
+      <svg class="leaf-corner br" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 5 Q40 8 55 40 Q30 35 5 5Z" fill="#2a4035" />
+        <path d="M5 5 Q8 40 40 55 Q35 30 5 5Z" fill="#2a4035" opacity=".7" />
+      </svg>
+
+      <div class="sec-inner" style="position:relative;z-index:5;">
+        <span class="eyebrow pink reveal">Find Your Way</span>
+        <span class="sec-title light tiki-glow reveal d1">The Venue</span>
+        <div class="leaf-divider reveal d2">
+          <div class="leaf-divider-line pink"></div>
+          <svg width="26" height="26" viewBox="0 0 200 200" style="flex-shrink:0;opacity:.7">
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(0 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#b85c7a" opacity=".8" transform="rotate(72 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(144 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#b85c7a" opacity=".8" transform="rotate(216 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(288 100 100)" />
+            <circle cx="100" cy="100" r="16" fill="#c8a96a" />
+          </svg>
+          <div class="leaf-divider-line pink r"></div>
+        </div>
+
+        <div class="venue-layout reveal d3">
+          <!-- Map -->
+          <div class="venue-map-frame tilt">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3873.6!2d121.2433!3d14.1702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd7b77e1a0c7f5%3A0x6f8b2e5c6d3a1234!2sLumiera+Spring+Resort!5e0!3m2!1sen!2sph!4v1685000000000!5m2!1sen!2sph"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Lumiera Spring Resort Map">
+            </iframe>
+          </div>
+
+          <!-- Info -->
+          <div>
+            <span class="venue-info-head">Lumiera Spring Resort</span>
+            <span class="venue-info-sub">Where the garden blooms for Margaux</span>
+
+            <ul class="venue-detail-list">
+              <li>
+                <div class="vd-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5z"/></svg>
+                </div>
+                <div>
+                  <span class="vd-label">Address</span>
+                  Lakewood, Los Baños, Laguna, Philippines
+                </div>
+              </li>
+              <li>
+                <div class="vd-icon">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div>
+                  <span class="vd-label">Date &amp; Time</span>
+                  Monday, June 9, 2026 · 6:00 in the Evening
+                </div>
+              </li>
+              <li>
+                <div class="vd-icon">
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <span class="vd-label">Dress Code</span>
+                  Boho Hawaiian Evening · Florals &amp; Pastels
+                </div>
+              </li>
+              <li>
+                <div class="vd-icon">
+                  <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                </div>
+                <div>
+                  <span class="vd-label">Venue Type</span>
+                  Spring Resort · Garden &amp; Indoor Reception
+                </div>
+              </li>
+            </ul>
+
+            <a class="venue-cta" href="https://maps.google.com/?q=Lumiera+Spring+Resort+Los+Baños+Laguna" target="_blank" rel="noopener">
+              🌺 &nbsp; Get Directions
+            </a>
+
+            <div class="venue-note">
+              <p>"Come dressed in florals and let your spirit be as free as the breeze.<br>We can't wait to celebrate with you under the garden sky."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 18 TRADITIONS ── -->
+    <div class="sec eighteen-band rope-border" style="position:relative;overflow:hidden;">
+      <!-- Traditions corner flowers -->
+      <div class="trad-flower top-right">
+        <img src="flowertrad.png" alt="" />
+      </div>
+      <div class="trad-flower bot-left">
+        <img src="flowertrad.png" alt="" />
+      </div>
+
+      <div class="rattan-sec"></div>
+      <div class="tropical-stripe"></div>
+
+      <div class="sec-inner" style="position:relative;z-index:5;">
+        <span class="eyebrow pink reveal">Honoring Her</span>
+        <span class="sec-title light tiki-glow reveal d1">The Eighteen Traditions</span>
+        <div class="leaf-divider reveal d2">
+          <div class="leaf-divider-line pink"></div>
+          <svg width="26" height="26" viewBox="0 0 200 200" style="flex-shrink:0;opacity:.6">
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(0 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#b85c7a" opacity=".8" transform="rotate(72 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(144 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#b85c7a" opacity=".8" transform="rotate(216 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(288 100 100)" />
+            <circle cx="100" cy="100" r="16" fill="#c8a96a" />
+          </svg>
+          <div class="leaf-divider-line pink r"></div>
+        </div>
+        <div class="tab-row reveal d3">
+          <button class="t-tab on" onclick="switchTab('money',this)">💛 18 Mystery Money Boxes</button>
+          <button class="t-tab" onclick="switchTab('gifts',this)">🌸 18 Gifts</button>
+          <button class="t-tab" onclick="switchTab('shots',this)">🥂 18 Shots</button>
+        </div>
+
+        <!-- Money -->
+        <div class="t-panel on reveal" id="p-money">
+          <p class="t-panel-intro">Eighteen mystery boxes — each holding a golden surprise for Margaux, blessed by the
+            people she loves most.</p>
+          <div class="g18">
+            <div class="c18 money tilt"><span class="n18">1</span><span class="l18">Box One</span></div>
+            <div class="c18 money tilt"><span class="n18">2</span><span class="l18">Box Two</span></div>
+            <div class="c18 money tilt"><span class="n18">3</span><span class="l18">Box Three</span></div>
+            <div class="c18 money tilt"><span class="n18">4</span><span class="l18">Box Four</span></div>
+            <div class="c18 money tilt"><span class="n18">5</span><span class="l18">Box Five</span></div>
+            <div class="c18 money tilt"><span class="n18">6</span><span class="l18">Box Six</span></div>
+            <div class="c18 money tilt"><span class="n18">7</span><span class="l18">Box Seven</span></div>
+            <div class="c18 money tilt"><span class="n18">8</span><span class="l18">Box Eight</span></div>
+            <div class="c18 money tilt"><span class="n18">9</span><span class="l18">Box Nine</span></div>
+            <div class="c18 money tilt"><span class="n18">10</span><span class="l18">Box Ten</span></div>
+            <div class="c18 money tilt"><span class="n18">11</span><span class="l18">Box Eleven</span></div>
+            <div class="c18 money tilt"><span class="n18">12</span><span class="l18">Box Twelve</span></div>
+            <div class="c18 money tilt"><span class="n18">13</span><span class="l18">Box Thirteen</span></div>
+            <div class="c18 money tilt"><span class="n18">14</span><span class="l18">Box Fourteen</span></div>
+            <div class="c18 money tilt"><span class="n18">15</span><span class="l18">Box Fifteen</span></div>
+            <div class="c18 money tilt"><span class="n18">16</span><span class="l18">Box Sixteen</span></div>
+            <div class="c18 money tilt"><span class="n18">17</span><span class="l18">Box Seventeen</span></div>
+            <div class="c18 money tilt"><span class="n18">18</span><span class="l18">Box Eighteen</span></div>
+          </div>
+        </div>
+
+        <!-- Gifts -->
+        <div class="t-panel" id="p-gifts">
+          <p class="t-panel-intro">Eighteen tokens of love, wrapped with care and offered with a heart full of blessings
+            for Margaux.</p>
+          <div class="g18">
+            <div class="c18 tilt"><span class="n18">1</span><span class="l18">Angel Marie Bajet</span></div>
+            <div class="c18 tilt"><span class="n18">2</span><span class="l18">Cecille Cerin</span></div>
+            <div class="c18 tilt"><span class="n18">3</span><span class="l18">Coleen Grace Manalo</span></div>
+            <div class="c18 tilt"><span class="n18">4</span><span class="l18">Dan Mar Presentacion</span></div>
+            <div class="c18 tilt"><span class="n18">5</span><span class="l18">Ethan Villanis</span></div>
+            <div class="c18 tilt"><span class="n18">6</span><span class="l18">Hannah Sofia Viernes</span></div>
+            <div class="c18 tilt"><span class="n18">7</span><span class="l18">James Sebastian Villanis</span></div>
+            <div class="c18 tilt"><span class="n18">8</span><span class="l18">Jeniel Valderama</span></div>
+            <div class="c18 tilt"><span class="n18">9</span><span class="l18">Jessica De Guzman</span></div>
+            <div class="c18 tilt"><span class="n18">10</span><span class="l18">Justin Howard Flores</span></div>
+            <div class="c18 tilt"><span class="n18">11</span><span class="l18">Karen Manalo</span></div>
+            <div class="c18 tilt"><span class="n18">12</span><span class="l18">Krista Marie</span></div>
+            <div class="c18 tilt"><span class="n18">13</span><span class="l18">Kurt Ezra Villanis</span></div>
+            <div class="c18 tilt"><span class="n18">14</span><span class="l18">Lovely Joy Targado</span></div>
+            <div class="c18 tilt"><span class="n18">15</span><span class="l18">Mitchiko Flores</span></div>
+            <div class="c18 tilt"><span class="n18">16</span><span class="l18">NJ Marzo</span></div>
+            <div class="c18 tilt"><span class="n18">17</span><span class="l18">RJ Marzo</span></div>
+            <div class="c18 tilt"><span class="n18">18</span><span class="l18">Rafael Viernes</span></div>
+          </div>
+        </div>
+
+        <!-- Shots -->
+        <div class="t-panel" id="p-shots">
+          <p class="t-panel-intro">Eighteen toasts — eighteen cheers raised to Margaux as she blooms into womanhood.</p>
+          <div class="g18">
+            <div class="c18 shot tilt"><span class="n18">1</span><span class="l18">Aethan Ganot</span></div>
+            <div class="c18 shot tilt"><span class="n18">2</span><span class="l18">Angel Marie Bajet</span></div>
+            <div class="c18 shot tilt"><span class="n18">3</span><span class="l18">Dan Mar Presentacion</span></div>
+            <div class="c18 shot tilt"><span class="n18">4</span><span class="l18">Ethan Villanis</span></div>
+            <div class="c18 shot tilt"><span class="n18">5</span><span class="l18">Jerald Carl Bonsol</span></div>
+            <div class="c18 shot tilt"><span class="n18">6</span><span class="l18">Jessica De Guzman</span></div>
+            <div class="c18 shot tilt"><span class="n18">7</span><span class="l18">John Michael Viernes</span></div>
+            <div class="c18 shot tilt"><span class="n18">8</span><span class="l18">John Paul Viernes</span></div>
+            <div class="c18 shot tilt"><span class="n18">9</span><span class="l18">Karen Manalo</span></div>
+            <div class="c18 shot tilt"><span class="n18">10</span><span class="l18">Krista Marie</span></div>
+            <div class="c18 shot tilt"><span class="n18">11</span><span class="l18">Lovely Joy Targado</span></div>
+            <div class="c18 shot tilt"><span class="n18">12</span><span class="l18">Maki Valerio</span></div>
+            <div class="c18 shot tilt"><span class="n18">13</span><span class="l18">Mitchiko Flores</span></div>
+            <div class="c18 shot tilt"><span class="n18">14</span><span class="l18">Nicole Raval</span></div>
+            <div class="c18 shot tilt"><span class="n18">15</span><span class="l18">NJ Marzo</span></div>
+            <div class="c18 shot tilt"><span class="n18">16</span><span class="l18">Patricia Joy Pullon</span></div>
+            <div class="c18 shot tilt"><span class="n18">17</span><span class="l18">RJ Marzo</span></div>
+            <div class="c18 shot tilt"><span class="n18">18</span><span class="l18">Vincent Flores</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── WISHLIST ── -->
+    <div class="sec wish-band rope-border" style="position:relative;overflow:hidden;">
+      <div class="rattan-sec"></div>
+      <div class="tropical-stripe"></div>
+      <div class="tropical-stripe" style="animation-delay:-6s;"></div>
+      <svg class="plumeria-wm" style="width:280px;height:280px;top:60%;left:8%;" viewBox="0 0 200 200"
+        xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(0 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(72 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(144 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#d4849c" transform="rotate(216 100 100)" />
+        <ellipse cx="100" cy="38" rx="22" ry="45" fill="#b85c7a" transform="rotate(288 100 100)" />
+        <circle cx="100" cy="100" r="20" fill="#c8a96a" />
+      </svg>
+      <div class="sec-inner" style="position:relative;z-index:5;">
+        <span class="eyebrow pink reveal">Leave Your Love</span>
+        <span class="sec-title light tiki-glow reveal d1">Wish Margaux Well</span>
+        <div class="leaf-divider reveal d2">
+          <div class="leaf-divider-line pink"></div>
+          <span style="font-size:.9rem;opacity:.5;">🌺</span>
+          <div class="leaf-divider-line pink r"></div>
+        </div>
+        <div class="wish-box reveal d3">
+          <p class="wish-intro">"Write her a wish — a blessing, a prayer,<br>a promise for the beautiful journey ahead."
+          </p>
+          <div class="wish-form">
+            <input class="w-inp" id="w-name" placeholder="Your name" style="flex:0 0 160px;">
+            <input class="w-inp" id="w-msg" placeholder="Your birthday wish for Margaux…" style="flex:2;">
+            <button class="w-btn" onclick="addWish()">Send ✦</button>
+          </div>
+          <div class="wishes-live" id="wishes-live"></div>
+          <div class="wish-sep"></div>
+          <p
+            style="font-family:var(--ff-serif);font-style:italic;font-size:1rem;color:var(--sv1);margin-bottom:1.2rem;">
+            Margaux's Wish List</p>
+          <div class="wl-grid">
+            <div class="wl-item tilt"><span class="wl-num">1</span>
+              <div>
+                <p class="wl-title">Travel</p>
+                <p class="wl-desc">To explore new places and collect beautiful memories</p>
+              </div>
+            </div>
+            <div class="wl-item tilt"><span class="wl-num">2</span>
+              <div>
+                <p class="wl-title">Skincare Set</p>
+                <p class="wl-desc">Premium skincare for glowing skin, always</p>
+              </div>
+            </div>
+            <div class="wl-item tilt"><span class="wl-num">3</span>
+              <div>
+                <p class="wl-title">Camera</p>
+                <p class="wl-desc">To capture every beautiful moment in life</p>
+              </div>
+            </div>
+            <div class="wl-item tilt"><span class="wl-num">4</span>
+              <div>
+                <p class="wl-title">Books &amp; Journal</p>
+                <p class="wl-desc">Stories to read and pages to fill with her own story</p>
+              </div>
+            </div>
+            <div class="wl-item tilt"><span class="wl-num">5</span>
+              <div>
+                <p class="wl-title">Fashion Finds</p>
+                <p class="wl-desc">Clothes that match her beautiful spirit</p>
+              </div>
+            </div>
+            <div class="wl-item tilt"><span class="wl-num">6</span>
+              <div>
+                <p class="wl-title">Anything from the Heart</p>
+                <p class="wl-desc">Your presence is already the greatest gift of all</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ATTIRE ── -->
+    <div class="sec attire-band rope-border" style="position:relative;overflow:hidden;">
+      <div class="rattan-sec"></div>
+      <div class="tropical-stripe" style="animation-delay:-3s;"></div>
+      <div class="sec-inner" style="position:relative;z-index:5;">
+        <span class="eyebrow pink reveal">Dress to Impress</span>
+        <span class="sec-title light tiki-glow reveal d1">Attire Guide</span>
+        <div class="leaf-divider reveal d2">
+          <div class="leaf-divider-line pink"></div>
+          <svg width="26" height="26" viewBox="0 0 40 40" style="opacity:.65">
+            <path d="M20 2 Q24 20 20 38 Q16 20 20 2Z" fill="#2a4035" />
+            <path d="M2 20 Q20 24 38 20 Q20 16 2 20Z" fill="#2a4035" />
+            <circle cx="20" cy="20" r="3" fill="#d4849c" />
+          </svg>
+          <div class="leaf-divider-line pink r"></div>
+        </div>
+        <div class="attire-grid reveal d3">
+        <!-- Photo placeholder -->
+        <div class="attire-frame tilt">
+          <img src="dresscode.jpg" alt="Attire inspo" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <!-- Info -->
+          <div>
+            <h3 class="at-head">Dress Code</h3>
+            <span class="at-theme">Deep Boho Hawaiian · Pink &amp; Silver</span>
+            <p class="at-body">Embrace the spirit of the islands with boho-chic elegance. Think flowy fabrics, tropical
+              florals, soft blush tones, and shimmering silver accents. Adorn yourself in the colors of hibiscus and
+              moonlit waves — and come ready to bloom alongside Margaux.</p>
+            <div class="palette-row" style="justify-content:center;">
+              <div class="sw">
+                <div class="sw-dot" style="background:#E8967A;"></div><span class="sw-name">Coral</span>
+              </div>
+              <div class="sw">
+                <div class="sw-dot" style="background:#B8D4E8;"></div><span class="sw-name">Sky Blue</span>
+              </div>
+              <div class="sw">
+                <div class="sw-dot" style="background:#A8BB78;"></div><span class="sw-name">Sage</span>
+              </div>
+              <div class="sw">
+                <div class="sw-dot" style="background:#D4848C;"></div><span class="sw-name">Dusty Rose</span>
+              </div>
+              <div class="sw">
+                <div class="sw-dot" style="background:#E8D898;"></div><span class="sw-name">Butter</span>
+              </div>
+              <div class="sw">
+                <div class="sw-dot" style="background:#F8F4F0;border:1px solid rgba(0,0,0,.08);"></div><span
+                  class="sw-name">White</span>
+              </div>
+            </div>
+            <ul class="at-rules">
+              <li>Formal to semi-formal attire preferred</li>
+              <li>Ladies — floral dresses, chiffon gowns, boho wraps, island florals</li>
+              <li>Gentlemen — barong, linen suits, or tropical print shirts</li>
+              <li>Stick to: pink, silver, blush, gold, or deep plum tones</li>
+              <li>Hawaiian &amp; tropical florals are warmly welcome</li>
+              <li>Boho accessories encouraged — shells, woven bags, floral crowns</li>
+              <li>Please avoid wearing white — reserved for our debutante</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CLOSING ── -->
+    <div class="sec countdown-band rope-border"
+      style="text-align:center;background:linear-gradient(160deg,var(--mist) 0%,#ede6e9 100%)!important;position:relative;overflow:hidden;">
+      <div class="rattan-sec"></div>
+      <img src="flowertrad.png" alt="" style="position:absolute;width:420px;height:420px;bottom:-60px;left:-60px;opacity:0.22;filter:saturate(0.6) brightness(1.1) hue-rotate(5deg);pointer-events:none;z-index:1;animation:flowerSpin2 26s linear infinite;" />
+      <div class="sec-inner" style="position:relative;z-index:5;">
+        <span class="eyebrow silver reveal">You Are Invited</span>
+        <span class="sec-title light tiki-glow reveal d1">Join the Garden Party</span>
+        <div class="leaf-divider reveal d2">
+          <div class="leaf-divider-line sv"></div>
+          <svg width="22" height="22" viewBox="0 0 200 200" style="flex-shrink:0;opacity:.55">
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(0 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#b85c7a" opacity=".8" transform="rotate(72 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(144 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#b85c7a" opacity=".8" transform="rotate(216 100 100)" />
+            <ellipse cx="100" cy="40" rx="18" ry="36" fill="#d4849c" transform="rotate(288 100 100)" />
+            <circle cx="100" cy="100" r="16" fill="#c8a96a" />
+          </svg>
+          <div class="leaf-divider-line sv r"></div>
+        </div>
+        <p class="reveal d3"
+          style="font-family:var(--ff-serif);font-style:italic;font-size:1.15rem;color:var(--sv1);max-width:520px;margin:0 auto;line-height:1.9;">
+          "Like the hibiscus that blooms once in full glory,<br>this evening is once-in-a-lifetime.<br>We hope to share
+          it with you."
+        </p>
+        <div class="reveal d4" style="margin-top:2.5rem;">
+          <a href="#"
+            style="display:inline-block;font-family:var(--ff-sans);font-weight:200;font-size:.6rem;letter-spacing:.5em;text-transform:uppercase;color:var(--pk3);border:1px solid rgba(212,132,156,.4);padding:.95em 3em;text-decoration:none;transition:all .4s;"
+            onmouseover="this.style.background='rgba(212,132,156,.12)';this.style.borderColor='var(--pk2)'"
+            onmouseout="this.style.background='';this.style.borderColor='rgba(212,132,156,.4)'">RSVP Now ✦</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FOOTER ── -->
+    <footer style="position:relative;overflow:hidden;">
+      <div class="rattan-sec" style="opacity:.5;"></div>
+      <div style="position:relative;z-index:5;">
+        <div class="ft-ornament">
+          <span>🌿</span><span>🌺</span><span style="font-size:1.4rem;">✦</span><span>🌺</span><span>🌿</span>
+        </div>
+        <div class="ft-name">Margaux</div>
+        <p class="ft-text">Sweet Eighteen · June 9, 2026 · Lumiera Spring Resort · Los Baños, Laguna</p>
+        <p class="ft-text" style="margin-top:.8rem;opacity:.35;">A Boho Hawaiian Evening ✦ Made with Love</p>
+        <div class="shell-row" style="margin-top:1.5rem;opacity:.25;">
+          <span>🐚</span><span>🌸</span><span>🌺</span><span>🌸</span><span>🐚</span></div>
+      </div>
+    </footer>
+
+  </div><!-- /main -->
+
+  <script>
+    /* ── CURSOR ── */
+    const dot = document.getElementById('cur-dot');
+    const ring = document.getElementById('cur-ring');
+
+    document.addEventListener('mousemove', e => {
+      // Dot: instant, no transition
+      dot.style.left = e.clientX + 'px';
+      dot.style.top  = e.clientY + 'px';
+      // Ring: follows with its own CSS transition
+      ring.style.left = e.clientX + 'px';
+      ring.style.top  = e.clientY + 'px';
+    }, { passive: true });
+
+    // Expand ring on hoverable elements
+    document.querySelectorAll('a, button, .tilt, .c18, .wl-item, .t-tab, .sw').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+    });
+
+    /* ── FLOATING PLUMERIA PETALS ── */
+    (function () {
+      const field = document.getElementById('petal-field');
+      const PETAL_COLORS = [
+        '#f8c8d8', '#e8a0b8', '#f0b0c4', '#fad4e4',
+        '#e6bfd2', '#d4849c', '#b85c7a', '#fce8f0'
+      ];
+      const count = 26;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'fp';
+        const size = 7 + Math.random() * 10;
+        const color = PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)];
+        const dur = 14 + Math.random() * 20;
+        const delay = -(Math.random() * dur);
+        const left = Math.random() * 100;
+        const hueRot = Math.floor(Math.random() * 30 - 15);
+        p.style.cssText = `
+      left:${left}%;
+      width:${size}px;
+      height:${size * 1.5}px;
+      background:${color};
+      animation-duration:${dur}s;
+      animation-delay:${delay}s;
+      filter:hue-rotate(${hueRot}deg) drop-shadow(0 2px 4px rgba(184,92,122,.2));
+      border-radius:${40 + Math.random() * 20}% ${40 + Math.random() * 20}% ${40 + Math.random() * 20}% 0 / ${50 + Math.random() * 20}% ${50 + Math.random() * 20}% ${30 + Math.random() * 20}% ${30 + Math.random() * 20}%;
+    `;
+        field.appendChild(p);
+      }
+    })();
+
+    /* ── INTRO CANVAS: tropical petals + stars ── */
+    (function () {
+      const cv = document.getElementById('intro-canvas');
+      const cx = cv.getContext('2d');
+      let W, H, pts = [];
+      function resize() { W = cv.width = innerWidth; H = cv.height = innerHeight; }
+      resize(); window.addEventListener('resize', resize);
+
+      const COLORS = ['#b85c7a', '#d4849c', '#ebb8c8', '#8fa0ae', '#c8a96a', '#b8c6cf'];
+
+      for (let i = 0; i < 160; i++) {
+        pts.push({
+          x: Math.random() * 2000, y: Math.random() * 1600,
+          r: Math.random() * 2 + .4,
+          vx: (Math.random() - .5) * .35,
+          vy: -(Math.random() * .5 + .15),
+          a: Math.random() * .7 + .2,
+          color: COLORS[Math.floor(Math.random() * COLORS.length)],
+          isPetal: Math.random() > .55,
+          rot: Math.random() * Math.PI * 2,
+          rv: (Math.random() - .5) * .025,
+          life: 0, max: Math.random() * 180 + 80
+        });
+        pts[i].y = Math.random() * H;
+      }
+
+      let t = 0;
+      function draw() {
+        t++; cx.clearRect(0, 0, W, H);
+        pts.forEach(p => {
+          p.x += p.vx; p.y += p.vy; p.rot += p.rv; p.life++;
+          let lr = p.life / p.max;
+          let al = p.a * (lr < .12 ? lr * 8 : lr > .88 ? (1 - lr) * 8 : 1);
+          cx.globalAlpha = al;
+          if (p.isPetal) {
+            cx.save(); cx.translate(p.x % W, p.y % H); cx.rotate(p.rot);
+            cx.beginPath(); cx.ellipse(0, 0, p.r * 2.8, p.r, 0, 0, Math.PI * 2);
+            cx.fillStyle = p.color; cx.fill(); cx.restore();
+          } else {
+            cx.beginPath(); cx.arc(p.x % W, p.y % H, p.r, 0, Math.PI * 2);
+            cx.fillStyle = p.color; cx.fill();
+          }
+          cx.globalAlpha = 1;
+          if (p.life >= p.max || p.y < -20) { p.x = Math.random() * W; p.y = H + 20; p.life = 0; }
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    /* ── HERO CANVAS: stars + hibiscus petals drift ── */
+    (function () {
+      const cv = document.getElementById('hero-canvas');
+      const cx = cv.getContext('2d');
+      let W, H, stars = [], petals = [];
+      function resize() { W = cv.width = cv.offsetWidth; H = cv.height = cv.offsetHeight; }
+      resize(); window.addEventListener('resize', resize);
+
+      for (let i = 0; i < 240; i++) stars.push({
+        x: Math.random() * 4000, y: Math.random() * 2000,
+        r: Math.random() * 1.5 + .2, a: Math.random() * .6 + .15,
+        tw: Math.random() * Math.PI * 2, tws: Math.random() * .015 + .005
+      });
+
+      for (let i = 0; i < 30; i++) petals.push({
+        x: Math.random() * 4000, y: Math.random() * 2000,
+        r: Math.random() * 5 + 2,
+        vx: (Math.random() - .5) * .5, vy: Math.random() * .4 + .15,
+        rot: Math.random() * Math.PI * 2, rv: (Math.random() - .5) * .018,
+        a: Math.random() * .35 + .08,
+        color: Math.random() > .5 ? '#d4849c' : '#ebb8c8'
+      });
+
+      let t = 0;
+      function draw() {
+        t++; cx.clearRect(0, 0, W, H);
+        // night sky gradient
+        const g = cx.createLinearGradient(0, 0, 0, H);
+        g.addColorStop(0, '#fdf0f4'); g.addColorStop(1, '#f0d4e2');
+        cx.fillStyle = g; cx.fillRect(0, 0, W, H);
+
+        // stars
+        stars.forEach(s => {
+          s.tw += s.tws;
+          let tw = .5 + .5 * Math.sin(s.tw);
+          cx.beginPath(); cx.arc(s.x % W, s.y % H, s.r, 0, Math.PI * 2);
+          cx.fillStyle = '#b85c7a'; cx.globalAlpha = s.a * tw; cx.fill();
+        });
+
+        // petals
+        petals.forEach(p => {
+          p.x = (p.x + p.vx + W) % W; p.y = (p.y + p.vy + H) % H; p.rot += p.rv;
+          cx.save(); cx.translate(p.x, p.y); cx.rotate(p.rot);
+          cx.beginPath(); cx.ellipse(0, 0, p.r * 2.2, p.r, 0, 0, Math.PI * 2);
+          cx.fillStyle = p.color; cx.globalAlpha = p.a; cx.fill(); cx.restore();
+        });
+        cx.globalAlpha = 1;
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    /* ── INTRO ENTER ── */
+    function enterSite() {
+      document.getElementById('intro').classList.add('gone');
+      const m = document.getElementById('main');
+      m.style.opacity = '1';
+      tryMusic();
+    }
+
+    /* ── MUSIC ── */
+    function tryMusic() {
+      const a = document.getElementById('bgm');
+      a.volume = .3;
+      a.play().then(() => { showPause(); }).catch(() => { });
+    }
+    function toggleMusic() {
+      const a = document.getElementById('bgm');
+      if (a.paused) { a.play(); showPause(); } else { a.pause(); showPlay(); }
+    }
+    function showPause() { document.getElementById('ico-play').style.display = 'none'; document.getElementById('ico-pause').style.display = 'block'; }
+    function showPlay() { document.getElementById('ico-play').style.display = 'block'; document.getElementById('ico-pause').style.display = 'none'; }
+
+    window.addEventListener('load', tryMusic);
+
+    /* ── COUNTDOWN ── */
+    function tick() {
+      const target = new Date('2026-06-09T18:00:00+08:00');
+      const diff = target - new Date();
+      if (diff <= 0) { ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach(id => document.getElementById(id).textContent = '00'); return; }
+      const pad = n => String(n).padStart(2, '0');
+      document.getElementById('cd-d').textContent = pad(Math.floor(diff / 86400000));
+      document.getElementById('cd-h').textContent = pad(Math.floor(diff % 86400000 / 3600000));
+      document.getElementById('cd-m').textContent = pad(Math.floor(diff % 3600000 / 60000));
+      document.getElementById('cd-s').textContent = pad(Math.floor(diff % 60000 / 1000));
+    }
+    setInterval(tick, 1000); tick();
+
+    /* ── TABS ── */
+    function switchTab(id, btn) {
+      document.querySelectorAll('.t-panel').forEach(p => p.classList.remove('on'));
+      document.querySelectorAll('.t-tab').forEach(b => b.classList.remove('on'));
+      document.getElementById('p-' + id).classList.add('on');
+      btn.classList.add('on');
+    }
+
+    /* ── WISHES ── */
+    let wishes = [];
+    function addWish() {
+      const n = document.getElementById('w-name').value.trim();
+      const m = document.getElementById('w-msg').value.trim();
+      if (!m) return;
+      wishes.unshift({ n: n || 'A Guest', m });
+      document.getElementById('w-name').value = '';
+      document.getElementById('w-msg').value = '';
+      renderWishes();
+    }
+    function renderWishes() {
+      document.getElementById('wishes-live').innerHTML = wishes.slice(0, 8).map(w => `
+    <div class="wish-entry">
+      <span class="w-heart">♡</span>
+      <div><p class="w-name">${w.n}</p><p class="w-msg">${w.m}</p></div>
+    </div>`).join('');
+    }
+
+    /* ── SCROLL REVEAL ── */
+    const obs = new IntersectionObserver(ents => {
+      ents.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    /* ── 3D TILT ── */
+    document.querySelectorAll('.tilt').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const rx = ((e.clientY - r.top) / r.height - .5) * 12;
+        const ry = ((e.clientX - r.left) / r.width - .5) * -12;
+        card.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-3px)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+
+    /* ── PARALLAX HERO ── */
+    window.addEventListener('scroll', () => {
+      const y = scrollY;
+      const hc = document.getElementById('hero-canvas');
+      if (hc) hc.style.transform = `translateY(${y * .25}px)`;
+      const hb = document.querySelector('.hero-body');
+      if (hb) { hb.style.transform = `translateY(${y * .12}px)`; hb.style.opacity = 1 - y * .0018; }
+    });
+  </script>
+<!-- ── WATER RIPPLE LINE OVERLAY ─────────────────────────── -->
+<script>
+(function(){
+  const canvas = document.getElementById('water-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, t = 0;
+  let ripples = [];
+
+  function resize(){
+    const band = canvas.parentElement;
+    W = canvas.width  = band.offsetWidth;
+    H = canvas.height = band.offsetHeight;
+    initRipples();
+  }
+
+  function makeRipple(){
+    const nodes = 6 + Math.floor(Math.random() * 4); // 6-9 nodes
+    return {
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: 20 + Math.random() * 50,
+      maxR: 130 + Math.random() * 200,
+      speed: 0.15 + Math.random() * 0.25,
+      nodes,
+      // per-node radial offsets that drift over time
+      offsets: Array.from({length: nodes}, () => (Math.random() - 0.5) * 0.35),
+      speeds:  Array.from({length: nodes}, () => 0.004 + Math.random() * 0.008),
+      phases:  Array.from({length: nodes}, () => Math.random() * Math.PI * 2),
+      delay: Math.random() * 100,
+    };
+  }
+
+  function initRipples(){
+    ripples = [];
+    const count = Math.round((W * H) / 50000) + 9;
+    for(let i = 0; i < count; i++){
+      const rp = makeRipple();
+      rp.r = rp.maxR * Math.random();
+      rp.delay = 0;
+      ripples.push(rp);
+    }
+  }
+
+  function getPoints(rp){
+    const pts = [];
+    for(let i = 0; i < rp.nodes; i++){
+      const angle = (i / rp.nodes) * Math.PI * 2;
+      const warp = rp.offsets[i] * Math.sin(t * rp.speeds[i] * 60 + rp.phases[i]);
+      const r = rp.r * (1 + warp);
+      pts.push({
+        x: rp.x + Math.cos(angle) * r,
+        y: rp.y + Math.sin(angle) * r * 0.52, // perspective flatten
+      });
+    }
+    return pts;
+  }
+
+  // Draw a fully smooth closed curve through pts using catmull-rom style
+  function smoothCurve(pts){
+    const n = pts.length;
+    ctx.beginPath();
+    for(let i = 0; i < n; i++){
+      const p0 = pts[(i - 1 + n) % n];
+      const p1 = pts[i];
+      const p2 = pts[(i + 1) % n];
+      const p3 = pts[(i + 2) % n];
+      // control points
+      const cp1x = p1.x + (p2.x - p0.x) / 6;
+      const cp1y = p1.y + (p2.y - p0.y) / 6;
+      const cp2x = p2.x - (p3.x - p1.x) / 6;
+      const cp2y = p2.y - (p3.y - p1.y) / 6;
+      if(i === 0) ctx.moveTo(p1.x, p1.y);
+      ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
+    }
+    ctx.closePath();
+  }
+
+  function drawRipple(rp, alpha){
+    const pts = getPoints(rp);
+
+    // Shadow stroke
+    ctx.save();
+    smoothCurve(pts);
+    ctx.shadowColor = 'rgba(150,70,100,0.4)';
+    ctx.shadowBlur = 7;
+    ctx.shadowOffsetX = 2;
+    ctx.shadowOffsetY = 3;
+    ctx.strokeStyle = `rgba(195,120,150,${alpha * 0.6})`;
+    ctx.lineWidth = 1.8;
+    ctx.stroke();
+    ctx.restore();
+
+    // White highlight stroke
+    ctx.save();
+    smoothCurve(pts);
+    ctx.strokeStyle = `rgba(255,255,255,${alpha * 0.7})`;
+    ctx.lineWidth = 0.9;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function draw(){
+    t += 0.016;
+    ctx.clearRect(0, 0, W, H);
+
+    for(let i = 0; i < ripples.length; i++){
+      const rp = ripples[i];
+      if(rp.delay > 0){ rp.delay--; continue; }
+
+      rp.r += rp.speed;
+      const life = rp.r / rp.maxR;
+
+      let alpha;
+      if(life < 0.12)      alpha = life / 0.12;
+      else if(life < 0.65) alpha = 1;
+      else                 alpha = 1 - (life - 0.65) / 0.35;
+      alpha = Math.max(0, Math.min(1, alpha)) * 0.9;
+
+      drawRipple(rp, alpha);
+
+      if(rp.r >= rp.maxR) ripples[i] = makeRipple();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  draw();
+})();
+</script>
+
+<script>
+/* ── FLOWER INTRO: entrance → breathe handoff ────────── */
+(function(){
+  const flower = document.querySelector('.flower-container');
+  if (!flower) return;
+  // entrance animation duration = 2.2s + 0.6s delay = 2.8s total
+  flower.addEventListener('animationend', function handler(e) {
+    if (e.animationName === 'flowerEntrance') {
+      flower.removeEventListener('animationend', handler);
+      flower.classList.add('bloomed');
+    }
+  });
+})();
+(function(){
+  const field = document.getElementById('sparkle-field');
+  if (!field) return;
+  const COLORS = [
+    'rgba(220,200,235,.95)',
+    'rgba(212,132,156,.8)',
+    'rgba(200,169,106,.85)',
+    'rgba(240,210,225,.9)',
+    'rgba(180,160,200,.8)'
+  ];
+  const count = 32;
+  for (let i = 0; i < count; i++) {
+    const sp = document.createElement('div');
+    sp.className = 'sp';
+    const size = 1.5 + Math.random() * 3;
+    sp.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      width:${size}px;
+      height:${size}px;
+      background:${COLORS[Math.floor(Math.random()*COLORS.length)]};
+      box-shadow:0 0 ${size*3}px ${size}px ${COLORS[Math.floor(Math.random()*COLORS.length)]};
+      animation-duration:${4+Math.random()*8}s;
+      animation-delay:${Math.random()*8}s;
+      animation-iteration-count:infinite;
+    `;
+    field.appendChild(sp);
+  }
+})();
+
+/* ── PARALLAX SILVER BOKEH on mouse move ─────────────── */
+(function(){
+  const bokehEls = document.querySelectorAll('.plumeria-wm');
+  document.addEventListener('mousemove', e => {
+    const mx = (e.clientX / window.innerWidth - .5) * 14;
+    const my = (e.clientY / window.innerHeight - .5) * 14;
+    bokehEls.forEach((el, i) => {
+      const d = i % 2 === 0 ? 1 : -1;
+      el.style.transform = `translate(${mx*d*.6}px,${my*d*.6}px)`;
+    });
+  });
+})();
+
+/* ── C18 CARD sparkle on hover ───────────────────────── */
+document.querySelectorAll('.c18').forEach(card => {
+  card.addEventListener('mouseenter', function(){
+    const spark = document.createElement('div');
+    spark.style.cssText = `
+      position:absolute;top:8px;right:8px;width:6px;height:6px;border-radius:50%;
+      background:rgba(200,169,106,.7);box-shadow:0 0 8px rgba(200,169,106,.8);
+      pointer-events:none;z-index:10;
+      animation:sparkleFloat .8s ease-out forwards;
+    `;
+    this.appendChild(spark);
+    setTimeout(() => spark.remove(), 800);
+  });
+});
+</script>
+</body>
+
+</html>
