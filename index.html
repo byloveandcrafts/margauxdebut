@@ -3507,6 +3507,25 @@
       100% { left: 120%; }
     }
 
+    /* ─── MOBILE PERFORMANCE ─────────────────────────────── */
+    @media (max-width: 768px) {
+      /* Disable heavy CSS animations */
+      .tropical-stripe { animation: none !important; display: none !important; }
+      .rope-border::after { animation: none !important; display: none !important; }
+      .rattan-sec { display: none !important; }
+      .plumeria-wm { animation: none !important; }
+      /* Drop-shadow filters are GPU-expensive on mobile */
+      .sp-star { filter: none !important; }
+      .cd-num { filter: none !important; animation: none !important; }
+      .tiki-glow { text-shadow: none !important; filter: none !important; }
+      /* Reduce box-shadow complexity */
+      .det-card:hover { background: rgba(255,255,255,.85); }
+      /* Disable 3D tilt (heavy on mobile) */
+      .tilt { transform: none !important; }
+      /* Disable parallax scroll JS effect */
+      .hero-body { transform: none !important; opacity: 1 !important; }
+    }
+
     /* ─── SCROLL HINT: enhanced ───────────────────────────── */
     .scroll-hint span {
       background: linear-gradient(135deg, var(--sv1), var(--pk2));
@@ -4640,6 +4659,7 @@
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
     /* ── 3D TILT ── */
+    if (!isMobile) {
     document.querySelectorAll('.tilt').forEach(card => {
       card.addEventListener('mousemove', e => {
         const r = card.getBoundingClientRect();
@@ -4649,8 +4669,10 @@
       });
       card.addEventListener('mouseleave', () => { card.style.transform = ''; });
     });
+    }
 
     /* ── PARALLAX HERO ── */
+    if (!isMobile) {
     window.addEventListener('scroll', () => {
       const y = scrollY;
       const hc = document.getElementById('hero-canvas');
@@ -4658,12 +4680,15 @@
       const hb = document.querySelector('.hero-body');
       if (hb) { hb.style.transform = `translateY(${y * .12}px)`; hb.style.opacity = 1 - y * .0018; }
     });
+    }
   </script>
-<!-- ── WATER RIPPLE LINE OVERLAY ─────────────────────────── -->
+/* ── WATER RIPPLE LINE OVERLAY ─────────────────────────── */
 <script>
 (function(){
   const canvas = document.getElementById('water-canvas');
   if(!canvas) return;
+  // Skip on mobile — too expensive
+  if(isMobile) { canvas.style.display = 'none'; return; }
   const ctx = canvas.getContext('2d');
   let W, H, t = 0;
   let ripples = [];
@@ -4818,23 +4843,26 @@
     'rgba(200,195,235,.95)',
     'rgba(255,248,252,1)',
   ];
-  // Fewer star chars — mostly subtle crosses and dots
   const STAR_CHARS = ['✦','✧','·','·','·','✶','⋆'];
-  const count = 55; // more dot sparkles
+  // Fewer on mobile to reduce paint cost
+  const count = isMobile ? 20 : 55;
 
-  // Dot sparkles — dense silver glows
   for (let i = 0; i < count; i++) {
     const sp = document.createElement('div');
     sp.className = 'sp';
     const size = 2 + Math.random() * 5.5;
     const col = SILVER_COLORS[Math.floor(Math.random()*SILVER_COLORS.length)];
+    // Mobile: skip the heavy double box-shadow
+    const shadow = isMobile
+      ? `box-shadow:0 0 ${size*3}px ${size}px ${col};`
+      : `box-shadow:0 0 ${size*4}px ${size*2}px ${col}, 0 0 ${size*10}px ${size*1.5}px rgba(220,210,255,.45);`;
     sp.style.cssText = `
       left:${Math.random()*100}%;
       top:${Math.random()*100}%;
       width:${size}px;
       height:${size}px;
       background:${col};
-      box-shadow:0 0 ${size*4}px ${size*2}px ${col}, 0 0 ${size*10}px ${size*1.5}px rgba(220,210,255,.45);
+      ${shadow}
       animation-duration:${4+Math.random()*8}s;
       animation-delay:${Math.random()*10}s;
       animation-iteration-count:infinite;
@@ -4842,14 +4870,14 @@
     field.appendChild(sp);
   }
 
-  // Fewer stars — just 12, subtle
-  const starCount = 12;
+  // Fewer stars on mobile
+  const starCount = isMobile ? 5 : 12;
   for (let i = 0; i < starCount; i++) {
     const star = document.createElement('div');
     star.className = 'sp-star';
     const charIdx = Math.floor(Math.random()*STAR_CHARS.length);
     star.textContent = STAR_CHARS[charIdx];
-    const fs = 9 + Math.random() * 12; // smaller
+    const fs = 9 + Math.random() * 12;
     star.style.cssText = `
       left:${Math.random()*95}%;
       top:${Math.random()*95}%;
@@ -4871,6 +4899,10 @@
   const ctx = canvas.getContext('2d');
   let W, H;
   const particles = [];
+  // Fewer particles on mobile; skip canvas entirely if very low-end
+  const particleCount = isMobile ? 22 : 70;
+  const fpsLimit = isMobile ? 40 : 0; // ~40fps cap on mobile
+  let lastFrame = 0;
 
   function resize() {
     W = canvas.width = window.innerWidth;
@@ -4880,9 +4912,7 @@
   window.addEventListener('resize', resize);
 
   function createParticle() {
-    // 85% silver dots, 15% tiny star shapes
     const isStar = Math.random() > 0.85;
-    // Silver palette: whites, lavenders, pale blues
     const silverTones = [
       [245,242,255],[238,233,252],[252,250,255],[230,226,250],[242,240,255],[255,253,255]
     ];
@@ -4904,7 +4934,7 @@
     };
   }
 
-  for (let i = 0; i < 70; i++) {
+  for (let i = 0; i < particleCount; i++) {
     const p = createParticle();
     p.life = Math.random() * p.maxLife;
     p.delay = 0;
@@ -4926,7 +4956,12 @@
     ctx.restore();
   }
 
-  function draw() {
+  function draw(ts) {
+    // FPS cap on mobile
+    if (isMobile && fpsLimit > 0 && ts - lastFrame < 1000 / fpsLimit) {
+      requestAnimationFrame(draw); return;
+    }
+    lastFrame = ts;
     ctx.clearRect(0, 0, W, H);
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
@@ -4944,24 +4979,37 @@
       alpha = Math.max(0, Math.min(1, alpha)) * 0.82;
 
       ctx.globalAlpha = alpha;
-      const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3);
-      grd.addColorStop(0, `rgba(${p.r},${p.g},${p.b},1)`);
-      grd.addColorStop(0.35, `rgba(${p.r},${p.g},${p.b},.75)`);
-      grd.addColorStop(1, `rgba(${p.r},${p.g},${p.b},0)`);
 
-      ctx.shadowColor = `rgba(${p.r},${p.g},${p.b},.95)`;
-      ctx.shadowBlur = p.size * 8;
-      ctx.fillStyle = grd;
-
-      if (p.isStar) {
-        drawStar(p.x, p.y, p.spikes, p.size, p.size * 0.4, p.rotation);
-        ctx.fill();
+      if (isMobile) {
+        // Mobile: plain solid circle — no radial gradient, no shadowBlur
+        ctx.fillStyle = `rgba(${p.r},${p.g},${p.b},1)`;
+        if (p.isStar) {
+          drawStar(p.x, p.y, p.spikes, p.size, p.size * 0.4, p.rotation);
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
       } else {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
+        // Desktop: full quality
+        const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3);
+        grd.addColorStop(0, `rgba(${p.r},${p.g},${p.b},1)`);
+        grd.addColorStop(0.35, `rgba(${p.r},${p.g},${p.b},.75)`);
+        grd.addColorStop(1, `rgba(${p.r},${p.g},${p.b},0)`);
+        ctx.shadowColor = `rgba(${p.r},${p.g},${p.b},.95)`;
+        ctx.shadowBlur = p.size * 8;
+        ctx.fillStyle = grd;
+        if (p.isStar) {
+          drawStar(p.x, p.y, p.spikes, p.size, p.size * 0.4, p.rotation);
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.shadowBlur = 0;
       }
-      ctx.shadowBlur = 0;
 
       if (p.life >= p.maxLife) {
         particles[i] = createParticle();
@@ -4971,11 +5019,12 @@
     ctx.globalAlpha = 1;
     requestAnimationFrame(draw);
   }
-  draw();
+  requestAnimationFrame(draw);
 })();
 
 /* ── PARALLAX SILVER BOKEH on mouse move ─────────────── */
 (function(){
+  if(isMobile) return; // skip on touch devices
   const bokehEls = document.querySelectorAll('.plumeria-wm');
   document.addEventListener('mousemove', e => {
     const mx = (e.clientX / window.innerWidth - .5) * 14;
