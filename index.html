@@ -4544,24 +4544,85 @@
       btn.classList.add('on');
     }
 
-    /* ── WISHES ── */
-    let wishes = [];
-    function addWish() {
-      const n = document.getElementById('w-name').value.trim();
-      const m = document.getElementById('w-msg').value.trim();
-      if (!m) return;
-      wishes.unshift({ n: n || 'A Guest', m });
-      document.getElementById('w-name').value = '';
-      document.getElementById('w-msg').value = '';
-      renderWishes();
+    /* ── WISHES — Google Sheets real-time ── */
+
+    // ▼ Paste your Apps Script Web App URL here after deploying
+    const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+
+    let lastWishCount = 0;
+    let isSending = false;
+
+    async function addWish() {
+      const nameEl = document.getElementById('w-name');
+      const msgEl  = document.getElementById('w-msg');
+      const btn    = document.querySelector('.w-btn');
+      const n = nameEl.value.trim();
+      const m = msgEl.value.trim();
+      if (!m) {
+        msgEl.style.borderColor = 'var(--pk2)';
+        setTimeout(() => msgEl.style.borderColor = '', 1200);
+        return;
+      }
+      if (isSending) return;
+      isSending = true;
+      btn.textContent = '✦ Sending…';
+      btn.disabled = true;
+
+      try {
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: n || 'A Guest', message: m })
+        });
+        nameEl.value = '';
+        msgEl.value  = '';
+        btn.textContent = '✦ Sent!';
+        setTimeout(() => { btn.textContent = 'Send ✦'; btn.disabled = false; }, 2000);
+        // fetch immediately so sender sees their wish
+        setTimeout(fetchWishes, 800);
+      } catch(err) {
+        btn.textContent = 'Send ✦';
+        btn.disabled = false;
+        console.error('Wish error:', err);
+      }
+      isSending = false;
     }
-    function renderWishes() {
-      document.getElementById('wishes-live').innerHTML = wishes.slice(0, 8).map(w => `
-    <div class="wish-entry">
-      <span class="w-heart">♡</span>
-      <div><p class="w-name">${w.n}</p><p class="w-msg">${w.m}</p></div>
-    </div>`).join('');
+
+    async function fetchWishes() {
+      if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes('YOUR_APPS')) return;
+      try {
+        const res  = await fetch(APPS_SCRIPT_URL + '?action=get');
+        const data = await res.json();
+        if (Array.isArray(data)) renderWishes(data);
+      } catch(e) { /* silent fail */ }
     }
+
+    function renderWishes(wishes) {
+      const container = document.getElementById('wishes-live');
+      if (!wishes.length) return;
+      // Animate in only newly added items
+      const newCount = wishes.length;
+      container.innerHTML = wishes.slice(0, 10).map((w, i) => `
+        <div class="wish-entry" style="${i < (newCount - lastWishCount) && lastWishCount > 0 ? 'animation:riseIn .5s ease;' : ''}">
+          <span class="w-heart">♡</span>
+          <div>
+            <p class="w-name">${escapeHtml(w.name)}</p>
+            <p class="w-msg">${escapeHtml(w.message)}</p>
+          </div>
+        </div>`).join('');
+      lastWishCount = newCount;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // Poll every 5 seconds for real-time display
+    fetchWishes();
+    setInterval(fetchWishes, 5000);
 
     /* ── SCROLL REVEAL ── */
     const obs = new IntersectionObserver(ents => {
