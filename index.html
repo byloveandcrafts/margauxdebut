@@ -4348,52 +4348,53 @@
   </div><!-- /main -->
 
   <script>
-    /* ── CURSOR ── */
-    const dot = document.getElementById('cur-dot');
-    const ring = document.getElementById('cur-ring');
+    /* ── MOBILE DETECTION ── */
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
 
-    document.addEventListener('mousemove', e => {
-      // Dot: instant, no transition
-      dot.style.left = e.clientX + 'px';
-      dot.style.top  = e.clientY + 'px';
-      // Ring: follows with its own CSS transition
-      ring.style.left = e.clientX + 'px';
-      ring.style.top  = e.clientY + 'px';
-    }, { passive: true });
-
-    // Expand ring on hoverable elements
-    document.querySelectorAll('a, button, .tilt, .c18, .wl-item, .t-tab, .sw').forEach(el => {
-      el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
-    });
+    /* ── CURSOR (desktop only) ── */
+    if (!isMobile) {
+      const dot = document.getElementById('cur-dot');
+      const ring = document.getElementById('cur-ring');
+      document.addEventListener('mousemove', e => {
+        dot.style.left = e.clientX + 'px';
+        dot.style.top  = e.clientY + 'px';
+        ring.style.left = e.clientX + 'px';
+        ring.style.top  = e.clientY + 'px';
+      }, { passive: true });
+      document.querySelectorAll('a, button, .tilt, .c18, .wl-item, .t-tab, .sw').forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+      });
+    }
 
     /* ── FLOATING PLUMERIA PETALS ── */
     (function () {
       const field = document.getElementById('petal-field');
+      if (!field) return;
       const PETAL_COLORS = [
         '#f8c8d8', '#e8a0b8', '#f0b0c4', '#fad4e4',
         '#e6bfd2', '#d4849c', '#b85c7a', '#fce8f0'
       ];
-      const count = 26;
+      // Fewer petals on mobile — no drop-shadow filter (prevents flicker)
+      const count = isMobile ? 8 : 26;
       for (let i = 0; i < count; i++) {
         const p = document.createElement('div');
         p.className = 'fp';
         const size = 7 + Math.random() * 10;
         const color = PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)];
-        const dur = 14 + Math.random() * 20;
+        const dur = 18 + Math.random() * 22;
         const delay = -(Math.random() * dur);
         const left = Math.random() * 100;
-        const hueRot = Math.floor(Math.random() * 30 - 15);
         p.style.cssText = `
-      left:${left}%;
-      width:${size}px;
-      height:${size * 1.5}px;
-      background:${color};
-      animation-duration:${dur}s;
-      animation-delay:${delay}s;
-      filter:hue-rotate(${hueRot}deg) drop-shadow(0 2px 4px rgba(184,92,122,.2));
-      border-radius:${40 + Math.random() * 20}% ${40 + Math.random() * 20}% ${40 + Math.random() * 20}% 0 / ${50 + Math.random() * 20}% ${50 + Math.random() * 20}% ${30 + Math.random() * 20}% ${30 + Math.random() * 20}%;
-    `;
+          left:${left}%;
+          width:${size}px;
+          height:${size * 1.5}px;
+          background:${color};
+          animation-duration:${dur}s;
+          animation-delay:${delay}s;
+          will-change:transform,opacity;
+          border-radius:${40 + Math.random() * 20}% ${40 + Math.random() * 20}% ${40 + Math.random() * 20}% 0 / ${50 + Math.random() * 20}% ${50 + Math.random() * 20}% ${30 + Math.random() * 20}% ${30 + Math.random() * 20}%;
+        `;
         field.appendChild(p);
       }
     })();
@@ -4407,8 +4408,10 @@
       resize(); window.addEventListener('resize', resize);
 
       const COLORS = ['#b85c7a', '#d4849c', '#ebb8c8', '#8fa0ae', '#c8a96a', '#b8c6cf'];
+      // Reduce particle count on mobile
+      const particleCount = isMobile ? 40 : 160;
 
-      for (let i = 0; i < 160; i++) {
+      for (let i = 0; i < particleCount; i++) {
         pts.push({
           x: Math.random() * 2000, y: Math.random() * 1600,
           r: Math.random() * 2 + .4,
@@ -4424,9 +4427,13 @@
         pts[i].y = Math.random() * H;
       }
 
-      let t = 0;
-      function draw() {
-        t++; cx.clearRect(0, 0, W, H);
+      // On mobile throttle to ~30fps to save battery
+      let lastFrame = 0;
+      const fpsInterval = isMobile ? 33 : 0;
+      function draw(ts) {
+        if (isMobile && ts - lastFrame < fpsInterval) { requestAnimationFrame(draw); return; }
+        lastFrame = ts;
+        cx.clearRect(0, 0, W, H);
         pts.forEach(p => {
           p.x += p.vx; p.y += p.vy; p.rot += p.rv; p.life++;
           let lr = p.life / p.max;
@@ -4445,7 +4452,7 @@
         });
         requestAnimationFrame(draw);
       }
-      draw();
+      requestAnimationFrame(draw);
     })();
 
     /* ── HERO CANVAS: stars + hibiscus petals drift ── */
@@ -4456,13 +4463,17 @@
       function resize() { W = cv.width = cv.offsetWidth; H = cv.height = cv.offsetHeight; }
       resize(); window.addEventListener('resize', resize);
 
-      for (let i = 0; i < 240; i++) stars.push({
+      // Fewer elements on mobile
+      const starCount  = isMobile ? 60  : 240;
+      const petalCount = isMobile ? 8   : 30;
+
+      for (let i = 0; i < starCount; i++) stars.push({
         x: Math.random() * 4000, y: Math.random() * 2000,
         r: Math.random() * 1.5 + .2, a: Math.random() * .6 + .15,
         tw: Math.random() * Math.PI * 2, tws: Math.random() * .015 + .005
       });
 
-      for (let i = 0; i < 30; i++) petals.push({
+      for (let i = 0; i < petalCount; i++) petals.push({
         x: Math.random() * 4000, y: Math.random() * 2000,
         r: Math.random() * 5 + 2,
         vx: (Math.random() - .5) * .5, vy: Math.random() * .4 + .15,
@@ -4471,23 +4482,21 @@
         color: Math.random() > .5 ? '#d4849c' : '#ebb8c8'
       });
 
-      let t = 0;
-      function draw() {
-        t++; cx.clearRect(0, 0, W, H);
-        // night sky gradient
+      let lastFrame = 0;
+      const fpsInterval = isMobile ? 33 : 0;
+      function draw(ts) {
+        if (isMobile && ts - lastFrame < fpsInterval) { requestAnimationFrame(draw); return; }
+        lastFrame = ts;
+        cx.clearRect(0, 0, W, H);
         const g = cx.createLinearGradient(0, 0, 0, H);
         g.addColorStop(0, '#fdf0f4'); g.addColorStop(1, '#f0d4e2');
         cx.fillStyle = g; cx.fillRect(0, 0, W, H);
-
-        // stars
         stars.forEach(s => {
           s.tw += s.tws;
           let tw = .5 + .5 * Math.sin(s.tw);
           cx.beginPath(); cx.arc(s.x % W, s.y % H, s.r, 0, Math.PI * 2);
           cx.fillStyle = '#b85c7a'; cx.globalAlpha = s.a * tw; cx.fill();
         });
-
-        // petals
         petals.forEach(p => {
           p.x = (p.x + p.vx + W) % W; p.y = (p.y + p.vy + H) % H; p.rot += p.rv;
           cx.save(); cx.translate(p.x, p.y); cx.rotate(p.rot);
@@ -4497,7 +4506,7 @@
         cx.globalAlpha = 1;
         requestAnimationFrame(draw);
       }
-      draw();
+      requestAnimationFrame(draw);
     })();
 
     /* ── INTRO ENTER ── */
