@@ -429,13 +429,28 @@
 
     .hero-eyebrow {
       font-family: var(--ff-sans);
-      font-weight: 300;
-      font-size: .85rem;
+      font-weight: 400;
+      font-size: clamp(.85rem, 1.5vw, 1rem);
       letter-spacing: .55em;
       color: var(--sv1);
       text-transform: uppercase;
       display: block;
       margin-bottom: 1.2rem;
+    }
+
+    .hero-18 {
+      font-family: var(--ff-serif);
+      font-weight: 600;
+      font-style: normal;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      background: linear-gradient(160deg, var(--pk1) 0%, var(--pk2) 55%, var(--pk3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1.1;
+      margin-bottom: -.1em;
+      filter: drop-shadow(0 0 60px rgba(184, 92, 122, .35));
     }
 
     .hero-first {
@@ -462,10 +477,10 @@
 
     .hero-surname {
       font-family: var(--ff-sans);
-      font-weight: 300;
-      font-size: .88rem;
+      font-weight: 400;
+      font-size: clamp(.88rem, 1.6vw, 1.05rem);
       letter-spacing: .6em;
-      color: var(--sv2);
+      color: var(--sv1);
       text-transform: uppercase;
       display: block;
       margin-top: 1.2rem;
@@ -499,10 +514,10 @@
 
     .hero-date {
       font-family: var(--ff-sans);
-      font-weight: 300;
-      font-size: .92rem;
+      font-weight: 400;
+      font-size: clamp(1rem, 2vw, 1.2rem);
       letter-spacing: .35em;
-      color: var(--pk3);
+      color: var(--pk1);
       text-transform: uppercase;
       display: block;
       margin-bottom: .4rem;
@@ -511,9 +526,9 @@
     .hero-venue {
       font-family: var(--ff-serif);
       font-style: italic;
-      font-weight: 300;
-      font-size: clamp(1.1rem, 2.8vw, 1.5rem);
-      color: var(--sv2);
+      font-weight: 400;
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      color: var(--sv1);
     }
 
     .scroll-hint {
@@ -3766,47 +3781,9 @@
         <path d="M5 5 Q8 40 40 55 Q35 30 5 5Z" fill="#2a4035" opacity=".7" />
       </svg>
 
-      <!-- Canva guide top -->
-      <div class="canva-row top">
-        <div class="canva-slot"><span>Canva floral<br>top-left</span></div>
-        <div class="canva-slot"><span>Canva floral<br>top-center</span></div>
-        <div class="canva-slot"><span>Canva floral<br>top-right</span></div>
-      </div>
-
-      <!-- Left photos -->
-      <div class="side-strip left">
-        <div class="ph-frame tilt">
-          <div class="ph-inner">
-            <div class="ph-icon"><svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg></div><span class="ph-label">photo.png</span>
-          </div>
-        </div>
-        <div class="ph-frame tilt">
-          <div class="ph-inner">
-            <div class="ph-icon"><svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg></div><span class="ph-label">photo.png</span>
-          </div>
-        </div>
-        <div class="ph-frame tilt">
-          <div class="ph-inner">
-            <div class="ph-icon"><svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg></div><span class="ph-label">photo.png</span>
-          </div>
-        </div>
-      </div>
-
       <!-- Hero body -->
       <div class="hero-body">
-        <span class="hero-eyebrow">the eighteenth birthday of</span>
+        <span class="hero-18">18</span>
         <span class="hero-first">Margaux</span>
         <span class="hero-name">Aiyenn</span>
         <span class="hero-surname">Sweet Eighteen · A Boho Hawaiian Evening</span>
@@ -3828,44 +3805,6 @@
           <path d="M0 30 C240 52 480 8 720 30 C960 52 1200 8 1440 30 L1440 52 L0 52Z" fill="#fdf0f4" opacity=".6" />
           <path d="M0 38 C360 18 720 52 1080 30 C1260 20 1380 42 1440 38 L1440 52 L0 52Z" fill="#fdf0f4" />
         </svg>
-      </div>
-
-      <!-- Right photos -->
-      <div class="side-strip right">
-        <div class="ph-frame tilt">
-          <div class="ph-inner">
-            <div class="ph-icon"><svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg></div><span class="ph-label">photo.png</span>
-          </div>
-        </div>
-        <div class="ph-frame tilt">
-          <div class="ph-inner">
-            <div class="ph-icon"><svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg></div><span class="ph-label">photo.png</span>
-          </div>
-        </div>
-        <div class="ph-frame tilt">
-          <div class="ph-inner">
-            <div class="ph-icon"><svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <polyline points="21 15 16 10 5 21" />
-              </svg></div><span class="ph-label">photo.png</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Canva guide bottom -->
-      <div class="canva-row bot">
-        <div class="canva-slot"><span>Canva floral<br>bottom-left</span></div>
-        <div class="canva-slot"><span>Canva floral<br>bottom-center</span></div>
-        <div class="canva-slot"><span>Canva floral<br>bottom-right</span></div>
       </div>
 
       <div class="scroll-hint">
@@ -4682,7 +4621,6 @@
     });
     }
   </script>
-/* ── WATER RIPPLE LINE OVERLAY ─────────────────────────── */
 <script>
 (function(){
   const canvas = document.getElementById('water-canvas');
