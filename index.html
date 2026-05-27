@@ -858,6 +858,48 @@
       }
     }
 
+    /* ── Traditions: stacked blocks ── */
+    .trad-block {
+      margin-bottom: 1rem;
+    }
+
+    .trad-block-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .trad-block-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .trad-block-title {
+      font-family: var(--ff-script);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      background: linear-gradient(160deg, var(--pk1) 0%, var(--pk2) 55%, var(--sv1) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    .trad-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2.8rem auto;
+      width: 100%;
+    }
+
+    .trad-divider .leaf-divider-line {
+      flex: 1;
+      max-width: 120px;
+    }
+
     /* ── Mystery Money Box ── */
     .money-box {
       margin: 2rem 0 1.5rem;
@@ -919,15 +961,16 @@
     .money-box-text {
       font-family: var(--ff-serif);
       font-style: italic;
-      font-size: clamp(.95rem, 1.8vw, 1.12rem);
+      font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+      font-weight: 600;
       color: var(--sv1);
-      line-height: 1.85;
-      max-width: 660px;
+      line-height: 2;
+      max-width: 680px;
       margin: 0 auto;
     }
 
     .money-box-text strong {
-      font-weight: 600;
+      font-weight: 700;
       font-style: normal;
       color: var(--pk1);
     }
@@ -2646,8 +2689,23 @@
       }
 
       .t-panel-intro {
-        font-size: .92rem;
+        font-size: .82rem;
         margin-bottom: 1.8rem;
+        padding: 0 .5rem;
+        line-height: 1.6;
+      }
+
+      .trad-block-title {
+        font-size: clamp(1.8rem, 7vw, 2.4rem);
+      }
+
+      .money-box {
+        padding: 1.6rem 1rem;
+      }
+
+      .money-box-text {
+        font-size: 1rem;
+        line-height: 1.85;
       }
 
       /* ── Wishes ── */
@@ -4358,56 +4416,12 @@
           </svg>
           <div class="leaf-divider-line pink r"></div>
         </div>
-        <div class="tab-row reveal d3">
-          <button class="t-tab on" onclick="switchTab('gifts',this)">🌸 18 Gifts</button>
-          <button class="t-tab" onclick="switchTab('shots',this)">🥂 18 Shots</button>
-        </div>
-
-        <!-- Mystery Money Box — visible on both tabs -->
-        <div class="money-box reveal d4">
-          <span class="money-box-icon">🎁</span>
-          <span class="money-box-title">Mystery Money Box</span>
-          <span class="money-box-sub">A Gift for Her Future</span>
-          <div class="money-box-rule"></div>
-          <p class="money-box-text">
-            Instead of the traditional <strong>Blue Bills</strong> for the debut celebration, we prepared a
-            <strong>Mystery Money Box</strong> where guests are invited to give <strong>any amount they wish</strong>
-            as a heartfelt contribution to support the debutante's future education and schooling journey.
-            There is <strong>no required amount</strong> — every contribution, big or small, will be deeply
-            appreciated and will serve as a meaningful gift for her dreams and aspirations.
-            Your love, support, and generosity will help inspire and guide her toward a brighter future.
-            Thank you for being part of this special milestone and for investing in her education and future success.
-          </p>
-        </div>
-
-        <!-- Gifts -->
-        <div class="t-panel on reveal" id="p-gifts">
-          <p class="t-panel-intro">Eighteen tokens of love, wrapped with care and offered with a heart full of blessings
-            for Margaux.</p>
-          <div class="g18">
-            <div class="c18 tilt"><span class="n18">1</span><span class="l18">Angel Marie Bajet</span></div>
-            <div class="c18 tilt"><span class="n18">2</span><span class="l18">Cecille Cerin</span></div>
-            <div class="c18 tilt"><span class="n18">3</span><span class="l18">Maki Valerio</span></div>
-            <div class="c18 tilt"><span class="n18">4</span><span class="l18">Dan Mar Presentacion</span></div>
-            <div class="c18 tilt"><span class="n18">5</span><span class="l18">Ellen Manalo</span></div>
-            <div class="c18 tilt"><span class="n18">6</span><span class="l18">Ellen Villanis</span></div>
-            <div class="c18 tilt"><span class="n18">7</span><span class="l18">Ethan Villanis</span></div>
-            <div class="c18 tilt"><span class="n18">8</span><span class="l18">James Sebastian Villanis</span></div>
-            <div class="c18 tilt"><span class="n18">9</span><span class="l18">Jessica De Guzman</span></div>
-            <div class="c18 tilt"><span class="n18">10</span><span class="l18">Karen Manalo</span></div>
-            <div class="c18 tilt"><span class="n18">11</span><span class="l18">Krista Marie</span></div>
-            <div class="c18 tilt"><span class="n18">12</span><span class="l18">Kurt Ezra Villanis</span></div>
-            <div class="c18 tilt"><span class="n18">13</span><span class="l18">Lovely Joy Targado</span></div>
-            <div class="c18 tilt"><span class="n18">14</span><span class="l18">Menchie Flores</span></div>
-            <div class="c18 tilt"><span class="n18">15</span><span class="l18">Nieves Viernes</span></div>
-            <div class="c18 tilt"><span class="n18">16</span><span class="l18">Rafael Viernes</span></div>
-            <div class="c18 tilt"><span class="n18">17</span><span class="l18">Vincent Flores</span></div>
-            <div class="c18 tilt"><span class="n18">18</span><span class="l18">Zenaida Manalo</span></div>
+        <!-- 18 Shots -->
+        <div class="trad-block reveal d3">
+          <div class="trad-block-header">
+            <span class="trad-block-icon">🥂</span>
+            <span class="trad-block-title">18 Shots</span>
           </div>
-        </div>
-
-        <!-- Shots -->
-        <div class="t-panel" id="p-shots">
           <p class="t-panel-intro">Eighteen toasts — eighteen cheers raised to Margaux as she blooms into womanhood.</p>
           <div class="g18">
             <div class="c18 shot tilt"><span class="n18">1</span><span class="l18">Aethan Ganot</span></div>
@@ -4430,6 +4444,71 @@
             <div class="c18 shot tilt"><span class="n18">18</span><span class="l18">Vincent Flores</span></div>
           </div>
         </div>
+
+        <!-- trad divider -->
+        <div class="trad-divider reveal">
+          <div class="leaf-divider-line pink"></div>
+          <span style="font-size:.85rem;opacity:.45;">🌸</span>
+          <div class="leaf-divider-line pink r"></div>
+        </div>
+
+        <!-- 18 Gifts -->
+        <div class="trad-block reveal d2">
+          <div class="trad-block-header">
+            <span class="trad-block-icon">🌸</span>
+            <span class="trad-block-title">18 Gifts</span>
+          </div>
+          <p class="t-panel-intro">Eighteen tokens of love, wrapped with care and offered with a heart full of blessings for Margaux.</p>
+          <div class="g18">
+            <div class="c18 tilt"><span class="n18">1</span><span class="l18">Angel Marie Bajet</span></div>
+            <div class="c18 tilt"><span class="n18">2</span><span class="l18">Cecille Cerin</span></div>
+            <div class="c18 tilt"><span class="n18">3</span><span class="l18">Maki Valerio</span></div>
+            <div class="c18 tilt"><span class="n18">4</span><span class="l18">Dan Mar Presentacion</span></div>
+            <div class="c18 tilt"><span class="n18">5</span><span class="l18">Ellen Manalo</span></div>
+            <div class="c18 tilt"><span class="n18">6</span><span class="l18">Ellen Villanis</span></div>
+            <div class="c18 tilt"><span class="n18">7</span><span class="l18">Ethan Villanis</span></div>
+            <div class="c18 tilt"><span class="n18">8</span><span class="l18">James Sebastian Villanis</span></div>
+            <div class="c18 tilt"><span class="n18">9</span><span class="l18">Jessica De Guzman</span></div>
+            <div class="c18 tilt"><span class="n18">10</span><span class="l18">Karen Manalo</span></div>
+            <div class="c18 tilt"><span class="n18">11</span><span class="l18">Krista Marie</span></div>
+            <div class="c18 tilt"><span class="n18">12</span><span class="l18">Kurt Ezra Villanis</span></div>
+            <div class="c18 tilt"><span class="n18">13</span><span class="l18">Lovely Joy Targado</span></div>
+            <div class="c18 tilt"><span class="n18">14</span><span class="l18">Menchie Flores</span></div>
+            <div class="c18 tilt"><span class="n18">15</span><span class="l18">Nieves Viernes</span></div>
+            <div class="c18 tilt"><span class="n18">16</span><span class="l18">Rafael Viernes</span></div>
+            <div class="c18 tilt"><span class="n18">17</span><span class="l18">Vincent Flores</span></div>
+            <div class="c18 tilt"><span class="n18">18</span><span class="l18">Zenaida Manalo</span></div>
+          </div>
+        </div>
+
+        <!-- trad divider -->
+        <div class="trad-divider reveal">
+          <div class="leaf-divider-line pink"></div>
+          <span style="font-size:.85rem;opacity:.45;">🎁</span>
+          <div class="leaf-divider-line pink r"></div>
+        </div>
+
+        <!-- Mystery Money Box -->
+        <div class="money-box reveal d3">
+          <span class="money-box-icon">🎁</span>
+          <span class="money-box-title">Mystery Money Box</span>
+          <span class="money-box-sub">A Gift for Her Future</span>
+          <div class="money-box-rule"></div>
+          <p class="money-box-text">
+            Instead of the traditional <strong>Blue Bills</strong> for the debut celebration, we prepared a
+            <strong>Mystery Money Box</strong> where guests are invited to give <strong>any amount they wish</strong>
+            as a heartfelt contribution to support the debutante's future education and schooling journey.
+          </p>
+          <p class="money-box-text" style="margin-top:1.2rem;">
+            There is <strong>no required amount</strong> — every contribution, big or small, will be deeply
+            appreciated and will serve as a meaningful gift for her dreams and aspirations.
+            Your love, support, and generosity will help inspire and guide her toward a brighter future.
+          </p>
+          <p class="money-box-text" style="margin-top:1.2rem;">
+            Thank you for being part of this special milestone and for investing in her education and future success.
+          </p>
+        </div>
+
       </div>
     </div>
 
